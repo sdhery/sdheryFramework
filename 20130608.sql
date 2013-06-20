@@ -30,6 +30,17 @@ CREATE TABLE `sys_object_key` (
 
 insert  into `sys_object_key`(`SYS_OBJECT_KEY`,`SYS_OBJECT_KEY_VALUE`) values ('sysUserLoginKey_root','1');
 
+/*Table structure for table `sys_tree` */
+
+DROP TABLE IF EXISTS `sys_tree`;
+
+CREATE TABLE `sys_tree` (
+  `SYS_TREE_ID` int(11) NOT NULL,
+  PRIMARY KEY (`SYS_TREE_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+/*Data for the table `sys_tree` */
+
 /*Table structure for table `sys_user` */
 
 DROP TABLE IF EXISTS `sys_user`;
@@ -46,7 +57,7 @@ CREATE TABLE `sys_user` (
 
 /*Data for the table `sys_user` */
 
-insert  into `sys_user`(`SYS_USER_ID`,`LOGIN_ID`,`PASSWORD_HASH`,`RANDOM`,`IS_ADMIN`,`STATE`) values (1,'root','9ed5lnOTnZihx7p8gaqaH2JT','0.7450066008495231',0,0);
+insert  into `sys_user`(`SYS_USER_ID`,`LOGIN_ID`,`PASSWORD_HASH`,`RANDOM`,`IS_ADMIN`,`STATE`) values (1,'root','9ed5lnOTnZihx7p8gaqaH2JT','0.7450066008495231',1,1);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

@@ -13,6 +13,7 @@
         <springframework.version>3.2.1.RELEASE</springframework.version>
         <junit.version>4.11</junit.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -275,5 +276,5 @@
             </plugins>
         </pluginManagement>
     </build>
-    
+
 </project>
