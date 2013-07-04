@@ -35,11 +35,16 @@ insert  into `sys_object_key`(`SYS_OBJECT_KEY`,`SYS_OBJECT_KEY_VALUE`) values ('
 DROP TABLE IF EXISTS `sys_tree`;
 
 CREATE TABLE `sys_tree` (
-  `SYS_TREE_ID` int(11) NOT NULL,
+  `SYS_TREE_ID` int(11) NOT NULL COMMENT '系统树主键',
+  `PARENT_ID` int(11) NOT NULL COMMENT '树的父ID',
+  `POS` int(3) DEFAULT NULL COMMENT '排序',
+  `SYS_TREE_NAME` varchar(256) COLLATE utf8_bin NOT NULL COMMENT '树名称',
   PRIMARY KEY (`SYS_TREE_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 /*Data for the table `sys_tree` */
+
+insert  into `sys_tree`(`SYS_TREE_ID`,`PARENT_ID`,`POS`,`SYS_TREE_NAME`) values (1,0,0,'后台管理'),(2,1,0,'信息管理'),(3,2,0,'所有信息');
 
 /*Table structure for table `sys_user` */
 
