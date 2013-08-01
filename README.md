@@ -1,4 +1,4 @@
 sdheryFramework
 ===============
 
-框架统一，配置第三包Maven配置文件
+框架统一，整合Maven工程
