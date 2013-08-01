@@ -12,6 +12,7 @@
     <modules>
         <module>sdheryFramework-parent</module>
         <module>sdheryFramework-generate</module>
+        <module>sdheryFramework-core</module>
         <module>sdheryFramework-info</module>
         <module>sdheryFramework-generate</module>
         <module>sdheryFramework-privilege</module>
