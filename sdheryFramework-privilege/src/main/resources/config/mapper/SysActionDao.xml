@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sdhery.module.privilege.dao.impl.SysActionDao">
+
+    <resultMap id="BaseResultMap" type="com.sdhery.module.privilege.domain.SysAction">
+        <id column="SYS_ACTION_ID" property="sysActionId"/>
+        <id column="ACTION_NAME" property="actionName"/>
+        <id column="ACTION_URL" property="actionUrl"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">SYS_ACTION_ID,ACTION_NAME,ACTION_URL</sql>
+
+    <insert id="insert" parameterType="com.sdhery.module.privilege.domain.SysAction">
+        insert into sys_action(SYS_ACTION_ID,ACTION_NAME,ACTION_URL) values (#{sysActionId},#{actionName},#{actionUrl})
+    </insert>
+
+    <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        SELECT <include refid="Base_Column_List" /> FROM sys_action where SYS_ACTION_ID = #{id}
+    </select>
+
+    <update id="update" parameterType="com.sdhery.module.privilege.domain.SysAction">
+        UPDATE sys_action set ACTION_NAME=#{actionName},ACTION_URL=#{actionUrl} where SYS_ACTION_ID=#{sysActionId}
+    </update>
+
+    <delete id="deleteById" parameterType="java.lang.Integer">DELETE FROM sys_action WHERE SYS_ACTION_ID = #{id}</delete>
+
+    <select id="count" resultType="java.lang.Integer" parameterType="com.sdhery.module.core.commons.Condition">
+        select <if test="distinct">distinct</if> count(1) from sys_action <if test="_parameter != null"><include refid="simpleConditionWhere"/></if>
+    </select>
+
+    <select id="search" resultMap="BaseResultMap" parameterType="com.sdhery.module.core.commons.Condition">
+        SELECT
+        <if test="distinct">distinct</if>
+        <include refid="Base_Column_List"/>
+        FROM sys_action
+        <if test="_parameter != null">
+            <include refid="simpleConditionWhere"/>
+        </if>
+        <if test="orderByClause != null">order by ${orderByClause}</if>
+    </select>
+
+    <sql id="simpleConditionWhere">
+        <where>
+            <if test="valid">
+                <foreach collection="conditionItems" item="conditionItem" separator="or">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <choose>
+                            <when test="conditionItem.noValue">
+                                and ${conditionItem.condition}
+                            </when>
+                            <when test="conditionItem.singleValue">
+                                and ${conditionItem.condition} #{conditionItem.value}
+                            </when>
+                            <when test="conditionItem.betweenValue">
+                                and ${conditionItem.condition} #{conditionItem.value} and #{conditionItem.secondValue}
+                            </when>
+                            <when test="conditionItem.listValue">
+                                and ${conditionItem.condition}
+                                <foreach close=")" collection="conditionItem.value" item="listItem" open="("
+                                         separator=",">
+                                #{listItem}
+                                </foreach>
+                            </when>
+                        </choose>
+                    </trim>
+                </foreach>
+            </if>
+        </where>
+    </sql>
+</mapper>
