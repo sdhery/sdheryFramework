@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v10.51 
-MySQL - 5.5.27 : Database - sdheryframework
+MySQL - 5.5.33 : Database - sdheryframework
 *********************************************************************
 */
 
@@ -15,6 +15,80 @@ MySQL - 5.5.27 : Database - sdheryframework
 CREATE DATABASE /*!32312 IF NOT EXISTS*/`sdheryframework` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_bin */;
 
 USE `sdheryframework`;
+
+/*Table structure for table `inf_article` */
+
+DROP TABLE IF EXISTS `inf_article`;
+
+CREATE TABLE `inf_article` (
+  `INFO_ARTICLE_ID` int(11) NOT NULL COMMENT '主键',
+  `TITLE` varchar(256) COLLATE utf8_bin NOT NULL COMMENT '标题',
+  `CONTENT` longtext COLLATE utf8_bin COMMENT '内容',
+  `CREATE_TIME` datetime NOT NULL COMMENT '创建时间',
+  PRIMARY KEY (`INFO_ARTICLE_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+/*Data for the table `inf_article` */
+
+insert  into `inf_article`(`INFO_ARTICLE_ID`,`TITLE`,`CONTENT`,`CREATE_TIME`) values (10301,'你好你好你好你好','你好你好你好你好','2013-07-17 14:49:49'),(10300,'123','123','2013-07-17 14:49:34'),(10200,'好的','好的好的','2013-07-15 14:43:29');
+
+/*Table structure for table `sys_action` */
+
+DROP TABLE IF EXISTS `sys_action`;
+
+CREATE TABLE `sys_action` (
+  `SYS_ACTION_ID` int(11) NOT NULL,
+  `ACTION_NAME` varchar(256) COLLATE utf8_bin NOT NULL,
+  `ACTION_URL` varchar(256) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`SYS_ACTION_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+/*Data for the table `sys_action` */
+
+insert  into `sys_action`(`SYS_ACTION_ID`,`ACTION_NAME`,`ACTION_URL`) values (1,'列出信息','/admin/info/list');
+
+/*Table structure for table `sys_ids` */
+
+DROP TABLE IF EXISTS `sys_ids`;
+
+CREATE TABLE `sys_ids` (
+  `TABLE_NAME` varchar(128) COLLATE utf8_bin NOT NULL,
+  `NEXT_VALUE` decimal(12,0) DEFAULT NULL,
+  PRIMARY KEY (`TABLE_NAME`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+/*Data for the table `sys_ids` */
+
+insert  into `sys_ids`(`TABLE_NAME`,`NEXT_VALUE`) values ('sys_tree',10200),('inf_article',10400);
+
+/*Table structure for table `sys_module` */
+
+DROP TABLE IF EXISTS `sys_module`;
+
+CREATE TABLE `sys_module` (
+  `SYS_MODULE_ID` int(11) NOT NULL,
+  `MODULE_NAME` varchar(256) COLLATE utf8_bin NOT NULL,
+  `DEFAULT_ACTION_ID` int(11) DEFAULT '0',
+  PRIMARY KEY (`SYS_MODULE_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+/*Data for the table `sys_module` */
+
+insert  into `sys_module`(`SYS_MODULE_ID`,`MODULE_NAME`,`DEFAULT_ACTION_ID`) values (2,'信息管理',1);
+
+/*Table structure for table `sys_module_action` */
+
+DROP TABLE IF EXISTS `sys_module_action`;
+
+CREATE TABLE `sys_module_action` (
+  `SYS_MODULE_ID` int(11) NOT NULL,
+  `SYS_ACTION_ID` int(11) NOT NULL,
+  PRIMARY KEY (`SYS_MODULE_ID`,`SYS_ACTION_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+/*Data for the table `sys_module_action` */
+
+insert  into `sys_module_action`(`SYS_MODULE_ID`,`SYS_ACTION_ID`) values (2,1);
 
 /*Table structure for table `sys_object_key` */
 
@@ -39,12 +113,13 @@ CREATE TABLE `sys_tree` (
   `PARENT_ID` int(11) NOT NULL COMMENT '树的父ID',
   `POS` int(3) DEFAULT NULL COMMENT '排序',
   `SYS_TREE_NAME` varchar(256) COLLATE utf8_bin NOT NULL COMMENT '树名称',
+  `SYS_MODULE_ID` int(11) NOT NULL DEFAULT '0' COMMENT '模块类型ID',
   PRIMARY KEY (`SYS_TREE_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 /*Data for the table `sys_tree` */
 
-insert  into `sys_tree`(`SYS_TREE_ID`,`PARENT_ID`,`POS`,`SYS_TREE_NAME`) values (1,0,0,'后台管理'),(2,1,0,'信息管理'),(3,2,0,'所有信息');
+insert  into `sys_tree`(`SYS_TREE_ID`,`PARENT_ID`,`POS`,`SYS_TREE_NAME`,`SYS_MODULE_ID`) values (1,0,0,'后台管理',0),(2,1,0,'信息菜单根节点',0),(3,2,0,'信息管理',0),(5,3,0,'所有信息',2);
 
 /*Table structure for table `sys_user` */
 
