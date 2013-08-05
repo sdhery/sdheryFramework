@@ -11,4 +11,5 @@ import com.sdhery.module.privilege.domain.SysModule;
 * @Date:2013-07-27 11:15:03
 */
 public interface ISysModuleService extends IBaseService<SysModule, Integer> {
+    public SysModule getSysModuleBySysModuleId(int sysModuleId);
 }

@@ -23,4 +23,8 @@ public class SysModuleService extends BaseService<SysModule, Integer> implements
     protected EntityDao<SysModule, Integer> getEntityDao() {
         return sysModuleDao;
     }
+
+    public SysModule getSysModuleBySysModuleId(int sysModuleId) {
+        return sysModuleDao.getById(sysModuleId);
+    }
 }

@@ -15,8 +15,8 @@
     <script>
         function loadLeft(sysTreeId) {
             var params = new Object();
-            params['sysTreeId'] = sysTreeId
-            $("#loadLeft").load("${frontPath}/admin/module/core/loadLeft.jsp", params)
+            params['parentId'] = sysTreeId
+            $("#loadLeft").load("${frontPath}/admin/loadMainLeftTree", params)
         }
         function loadRight() {
             $("#loadRight").load("${frontPath}/admin/module/info/add.jsp")

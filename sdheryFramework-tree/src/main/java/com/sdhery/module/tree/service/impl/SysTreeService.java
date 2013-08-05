@@ -3,6 +3,9 @@ package com.sdhery.module.tree.service.impl;
 
 import com.sdhery.module.core.dao.EntityDao;
 import com.sdhery.module.core.service.impl.BaseService;
+import com.sdhery.module.helper.ServiceManager;
+import com.sdhery.module.privilege.domain.SysAction;
+import com.sdhery.module.privilege.domain.SysModule;
 import com.sdhery.module.tree.dao.ISysTreeDao;
 import com.sdhery.module.tree.domain.SysTree;
 import com.sdhery.module.tree.service.ISysTreeService;
@@ -49,6 +52,9 @@ public class SysTreeService extends BaseService<SysTree, Integer> implements ISy
         node.setParentId(sysTreeNode.getParentId());
         List children = getSysTreeListByParentId(sysTreeNode.getSysTreeId());
         node.setIsParent(children.size()>0);
+        SysModule sysModule = ServiceManager.sysModuleService.getSysModuleBySysModuleId(sysTreeNode.getSysModuleId());
+        SysAction sysAction = ServiceManager.sysActionService.getSysActionBySysActionId(sysModule.getDefaultActionId());
+        node.setObject(sysAction);
         return node;
     }
 }

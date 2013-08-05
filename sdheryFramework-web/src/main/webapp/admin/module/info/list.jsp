@@ -9,16 +9,16 @@
     <script type="text/javascript" src="${frontPath}/admin/style/bootstrap/js/myModal.js"></script>
     <script>
         $(function () {
-			/*var temp = $("#modalDemo")
+			/*var temp = $("#modalDemo")在父窗口显示对话框
             $("#"+temp.attr("id"),window.parent.document).remove()
 			window.parent.$('body').append(temp)
-			window.parent.$("#modalDemo").modal("show")*/
+			window.parent.$("#modalDemo").modal("show")
             $("#modalDemo").myModal({
                 backdrop: true,
                 keyboard: true,
                 show: true,
                 iframe: true
-            })
+            })*/
         })
 
     </script>

@@ -18,5 +18,7 @@
         <property name="sysUserService" ref="sysUserService"/>
         <property name="sysTreeService" ref="sysTreeService"/>
         <property name="infoArticleService" ref="infoArticleService"/>
+        <property name="sysActionService" ref="sysActionService"/>
+        <property name="sysModuleService" ref="sysModuleService"/>
     </bean>
 </beans>

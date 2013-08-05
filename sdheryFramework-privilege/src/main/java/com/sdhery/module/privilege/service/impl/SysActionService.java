@@ -23,4 +23,8 @@ public class SysActionService extends BaseService<SysAction, Integer> implements
     protected EntityDao<SysAction, Integer> getEntityDao() {
         return sysActionDao;
     }
+
+    public SysAction getSysActionBySysActionId(int sysActionId) {
+        return sysActionDao.getById(sysActionId);
+    }
 }

@@ -19,8 +19,9 @@ import java.util.List;
 @Controller
 public class AdminLoadTree extends BaseController {
     @RequestMapping(value = "/admin/loadMainLeftTree")
-    @ResponseBody
-    Object loadMainLeftTree(Integer parentId) {
-        return ServiceManager.sysTreeService.getNodeListByParentId(parentId);
+    String loadMainLeftTree(ModelMap modelMap,Integer parentId) {
+        List result = ServiceManager.sysTreeService.getNodeListByParentId(parentId);
+        modelMap.put("result",result);
+        return "admin/module/core/loadLeft";
     }
 }

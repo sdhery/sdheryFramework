@@ -11,4 +11,5 @@ import com.sdhery.module.privilege.domain.SysAction;
 * @Date:2013-07-27 11:31:49
 */
 public interface ISysActionService extends IBaseService<SysAction, Integer> {
+    public SysAction getSysActionBySysActionId(int sysActionId);
 }

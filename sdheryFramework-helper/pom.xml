@@ -41,6 +41,12 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>sdheryFramework</groupId>
+            <artifactId>sdheryFramework-privilege</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <optional>true</optional>
