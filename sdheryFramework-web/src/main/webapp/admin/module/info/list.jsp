@@ -24,6 +24,9 @@
     </script>
 </head>
 <body>
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab">首页</a></li>
+</ul>
 <table class="table table-bordered table-hover table-striped table-condensed">
     <thead>
     <tr>
