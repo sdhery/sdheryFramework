@@ -16,7 +16,12 @@
         function loadLeft(sysTreeId) {
             var params = new Object();
             params['parentId'] = sysTreeId
-            $("#loadLeft").load("${frontPath}/admin/loadMainLeftTree", params)
+            $("#loadLeft").load("${frontPath}/admin/loadMainLeftTree", params,function(){
+                $(".nav-list a").click(function(){
+                    $(".nav-list li").removeClass("active");
+                    $(this).parent().addClass("active");
+                })
+            })
         }
         function loadRight() {
             $("#loadRight").load("${frontPath}/admin/module/info/add.jsp")

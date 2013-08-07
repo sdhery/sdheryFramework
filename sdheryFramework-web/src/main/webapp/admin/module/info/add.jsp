@@ -10,6 +10,7 @@
     <script type="text/javascript" src="${frontPath}/admin/style/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
+<c:import url="includeTop.jsp?tag=2"/>
 <form class="form-horizontal well" method="post" action="${frontPath}/admin/info/addOk">
     <div class="control-group">
         <label class="control-label">标题：</label>

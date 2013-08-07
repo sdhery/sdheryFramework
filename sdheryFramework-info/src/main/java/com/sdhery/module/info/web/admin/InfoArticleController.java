@@ -30,6 +30,7 @@ public class InfoArticleController extends BaseController {
     @RequestMapping(value = "/list")
     String list(ModelMap modelMap) throws Exception {
         Condition condition = new Condition();
+        condition.setOrderByClause("CREATE_TIME desc");
         List<InfoArticle> list = ServiceManager.infoArticleService.search(condition);
         modelMap.put("list",list);
         return "admin/module/info/list";

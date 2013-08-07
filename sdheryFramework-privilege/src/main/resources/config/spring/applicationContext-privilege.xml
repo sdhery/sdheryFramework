@@ -19,6 +19,13 @@
         <property name="successUrl" value="/admin/main.jsp"/>
         <!-- 未授权时要跳转的连接 -->
         <property name="unauthorizedUrl" value="/unauthorized.jsp"/>
+        <property name="filters">
+            <util:map>
+                <entry key="authc">
+                    <bean class="org.apache.shiro.web.filter.authc.PassThruAuthenticationFilter"/>
+                </entry>
+            </util:map>
+        </property>
         <property name="filterChainDefinitions">
             <value>
                 /admin/loginOK = anon

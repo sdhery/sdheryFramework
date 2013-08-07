@@ -28,6 +28,8 @@ public class AdminAuthorizingRealm extends AuthorizingRealm {
     }
 
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+        String loginId = (String) getAvailablePrincipal(principals);
+        System.out.println("loginId--"+loginId);
         return null;
     }
 }

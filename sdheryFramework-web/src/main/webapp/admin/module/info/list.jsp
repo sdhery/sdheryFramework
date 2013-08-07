@@ -24,9 +24,7 @@
     </script>
 </head>
 <body>
-<ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab">首页</a></li>
-</ul>
+<c:import url="includeTop.jsp?tag=1"/>
 <table class="table table-bordered table-hover table-striped table-condensed">
     <thead>
     <tr>
