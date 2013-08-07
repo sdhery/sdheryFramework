@@ -31,7 +31,7 @@
                 /admin/loginOK = anon
                 /admin/js/** = anon
                 /admin/style/** = anon
-                /admin/** = authc
+                /admin/** = user
             </value>
         </property>
     </bean>

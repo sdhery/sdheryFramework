@@ -4,6 +4,7 @@ import com.sdhery.module.core.commons.Condition;
 import com.sdhery.module.core.web.BaseController;
 import com.sdhery.module.helper.ServiceManager;
 import com.sdhery.module.info.domain.InfoArticle;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +27,7 @@ public class InfoArticleController extends BaseController {
         ServiceManager.infoArticleService.addInfoArticle(infoArticle);
         return "redirect:/admin/info/list";
     }
-
+    @RequiresPermissions("sys:area:view")
     @RequestMapping(value = "/list")
     String list(ModelMap modelMap) throws Exception {
         Condition condition = new Condition();
