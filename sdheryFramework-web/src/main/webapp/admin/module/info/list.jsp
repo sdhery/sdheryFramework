@@ -38,7 +38,7 @@
         <tr>
             <td>${article.title}</td>
             <td><fmt:formatDate value="${article.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-            <td>修改</td>
+            <td><a href="${frontPath}/admin/info/update?infoArticleId=${article.infoArticleId}">修改</a></td>
         </tr>
     </c:forEach>
     </tbody>

@@ -27,7 +27,7 @@ public class InfoArticleController extends BaseController {
         ServiceManager.infoArticleService.addInfoArticle(infoArticle);
         return "redirect:/admin/info/list";
     }
-    @RequiresPermissions("sys:area:view")
+
     @RequestMapping(value = "/list")
     String list(ModelMap modelMap) throws Exception {
         Condition condition = new Condition();
@@ -35,5 +35,18 @@ public class InfoArticleController extends BaseController {
         List<InfoArticle> list = ServiceManager.infoArticleService.search(condition);
         modelMap.put("list",list);
         return "admin/module/info/list";
+    }
+
+    @RequestMapping(value = "/update")
+    String list(ModelMap modelMap,Integer infoArticleId) throws Exception {
+        InfoArticle infoArticle = ServiceManager.infoArticleService.getById(infoArticleId);
+        modelMap.put("infoArticle",infoArticle);
+        return "admin/module/info/update";
+    }
+
+    @RequestMapping(value = "/updateOK")
+    String updateOK(InfoArticle infoArticle) throws Exception {
+        ServiceManager.infoArticleService.update(infoArticle);
+        return "redirect:/admin/info/list";
     }
 }
