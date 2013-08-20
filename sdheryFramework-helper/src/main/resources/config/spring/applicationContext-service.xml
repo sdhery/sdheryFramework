@@ -12,13 +12,4 @@
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
     ">
-
-    <bean id="serviceManager" class="com.sdhery.module.helper.ServiceManager">
-        <property name="sysObjectKeyService" ref="sysObjectKeyService"/>
-        <property name="sysUserService" ref="sysUserService"/>
-        <property name="sysTreeService" ref="sysTreeService"/>
-        <property name="infoArticleService" ref="infoArticleService"/>
-        <property name="sysActionService" ref="sysActionService"/>
-        <property name="sysModuleService" ref="sysModuleService"/>
-    </bean>
 </beans>

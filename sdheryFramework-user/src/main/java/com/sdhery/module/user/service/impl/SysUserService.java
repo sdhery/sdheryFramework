@@ -4,6 +4,7 @@ package com.sdhery.module.user.service.impl;
 import com.sdhery.module.core.dao.EntityDao;
 import com.sdhery.module.core.domain.SysObjectKey;
 import com.sdhery.module.core.security.DigestUtil;
+import com.sdhery.module.core.service.ISysObjectKeyService;
 import com.sdhery.module.core.service.impl.BaseService;
 import com.sdhery.module.helper.ServiceManager;
 import com.sdhery.module.user.dao.ISysUserDao;
@@ -25,6 +26,7 @@ import java.security.NoSuchAlgorithmException;
 public class SysUserService extends BaseService<SysUser, Integer> implements ISysUserService {
 
     ISysUserDao sysUserDao;
+    ISysObjectKeyService sysObjectKeyService;
 
     public void setSysUserDao(ISysUserDao sysUserDao) {
         this.sysUserDao = sysUserDao;
@@ -38,15 +40,21 @@ public class SysUserService extends BaseService<SysUser, Integer> implements ISy
         return sysUserDao.getSysUserByLoginId(loginId);
     }
 
+    public void setSysObjectKeyService(ISysObjectKeyService sysObjectKeyService) {
+        this.sysObjectKeyService = sysObjectKeyService;
+    }
+
     public String getRealLoginKey(String fieldValue) {
         return "sysUserLoginKey_" + fieldValue;
     }
+
+
 
     public SysUser getSysUserByKey(String key) {
         SysUser sysUser = null;
         try {
             key = getRealLoginKey(key);
-            SysObjectKey sysObjectKey = ServiceManager.sysObjectKeyService.getById(key);
+            SysObjectKey sysObjectKey = sysObjectKeyService.getById(key);
             if (sysObjectKey != null) {
                 int sysUserId = NumberUtils.toInt(sysObjectKey.getSysObjectKeyValue());
                 sysUser = getSysUserBySysUserId(sysUserId);

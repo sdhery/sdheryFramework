@@ -15,5 +15,7 @@
     <bean id="sysTreeService" class="com.sdhery.module.tree.service.impl.SysTreeService">
         <property name="sysTreeDao" ref="sysTreeDao"/>
         <property name="idGenerator" ref="mysqlIDGenerator"/>
+        <property name="sysModuleService" ref="sysModuleService"/>
+        <property name="sysActionService" ref="sysActionService"/>
     </bean>
 </beans>

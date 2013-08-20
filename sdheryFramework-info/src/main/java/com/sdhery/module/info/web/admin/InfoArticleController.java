@@ -4,7 +4,9 @@ import com.sdhery.module.core.commons.Condition;
 import com.sdhery.module.core.web.BaseController;
 import com.sdhery.module.helper.ServiceManager;
 import com.sdhery.module.info.domain.InfoArticle;
+import com.sdhery.module.info.service.IInfoArticleService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,10 +23,12 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "/admin/info")
 public class InfoArticleController extends BaseController {
+    @Autowired
+    IInfoArticleService infoArticleService;
 
     @RequestMapping(value = "/addOk")
     String addOk(InfoArticle infoArticle) throws Exception {
-        ServiceManager.infoArticleService.addInfoArticle(infoArticle);
+        infoArticleService.addInfoArticle(infoArticle);
         return "redirect:/admin/info/list";
     }
 
@@ -32,21 +36,21 @@ public class InfoArticleController extends BaseController {
     String list(ModelMap modelMap) throws Exception {
         Condition condition = new Condition();
         condition.setOrderByClause("CREATE_TIME desc");
-        List<InfoArticle> list = ServiceManager.infoArticleService.search(condition);
+        List<InfoArticle> list = infoArticleService.search(condition);
         modelMap.put("list",list);
         return "admin/module/info/list";
     }
 
     @RequestMapping(value = "/update")
     String list(ModelMap modelMap,Integer infoArticleId) throws Exception {
-        InfoArticle infoArticle = ServiceManager.infoArticleService.getById(infoArticleId);
+        InfoArticle infoArticle = infoArticleService.getById(infoArticleId);
         modelMap.put("infoArticle",infoArticle);
         return "admin/module/info/update";
     }
 
     @RequestMapping(value = "/updateOK")
     String updateOK(InfoArticle infoArticle) throws Exception {
-        ServiceManager.infoArticleService.update(infoArticle);
+        infoArticleService.update(infoArticle);
         return "redirect:/admin/info/list";
     }
 }

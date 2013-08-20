@@ -2,6 +2,8 @@ package com.sdhery.module.tree.web.admin;
 
 import com.sdhery.module.core.web.BaseController;
 import com.sdhery.module.helper.ServiceManager;
+import com.sdhery.module.tree.service.ISysTreeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,9 +20,12 @@ import java.util.List;
  */
 @Controller
 public class AdminLoadTree extends BaseController {
+    @Autowired
+    ISysTreeService sysTreeService;
+
     @RequestMapping(value = "/admin/loadMainLeftTree")
     String loadMainLeftTree(ModelMap modelMap,Integer parentId) {
-        List result = ServiceManager.sysTreeService.getNodeListByParentId(parentId);
+        List result = sysTreeService.getNodeListByParentId(parentId);
         modelMap.put("result",result);
         return "admin/module/core/loadLeft";
     }

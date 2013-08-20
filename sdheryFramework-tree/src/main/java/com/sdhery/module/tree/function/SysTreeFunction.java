@@ -1,7 +1,9 @@
 package com.sdhery.module.tree.function;
 
+import com.sdhery.module.core.util.spring.SpringContextHolder;
 import com.sdhery.module.helper.ServiceManager;
 import com.sdhery.module.tree.domain.SysTree;
+import com.sdhery.module.tree.service.ISysTreeService;
 
 import java.util.List;
 
@@ -13,11 +15,13 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class SysTreeFunction {
+    static ISysTreeService sysTreeService = (ISysTreeService) SpringContextHolder.getBean("sysTreeService");
+
     public static SysTree getSysTreeBySysTreeId(int sysTreeId){
-        return ServiceManager.sysTreeService.getById(sysTreeId);
+        return sysTreeService.getById(sysTreeId);
     }
 
     public static List<SysTree> getSysTreeListByParentId(int parentId){
-        return ServiceManager.sysTreeService.getSysTreeListByParentId(parentId);
+        return sysTreeService.getSysTreeListByParentId(parentId);
     }
 }

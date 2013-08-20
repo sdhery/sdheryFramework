@@ -6,6 +6,8 @@ import com.sdhery.module.core.service.impl.BaseService;
 import com.sdhery.module.helper.ServiceManager;
 import com.sdhery.module.privilege.domain.SysAction;
 import com.sdhery.module.privilege.domain.SysModule;
+import com.sdhery.module.privilege.service.ISysActionService;
+import com.sdhery.module.privilege.service.ISysModuleService;
 import com.sdhery.module.tree.dao.ISysTreeDao;
 import com.sdhery.module.tree.domain.SysTree;
 import com.sdhery.module.tree.service.ISysTreeService;
@@ -22,6 +24,8 @@ import java.util.List;
  */
 public class SysTreeService extends BaseService<SysTree, Integer> implements ISysTreeService {
     ISysTreeDao sysTreeDao;
+    ISysModuleService sysModuleService;
+    ISysActionService sysActionService;
 
     public void setSysTreeDao(ISysTreeDao sysTreeDao) {
         this.sysTreeDao = sysTreeDao;
@@ -29,6 +33,14 @@ public class SysTreeService extends BaseService<SysTree, Integer> implements ISy
 
     protected EntityDao<SysTree, Integer> getEntityDao() {
         return sysTreeDao;
+    }
+
+    public void setSysModuleService(ISysModuleService sysModuleService) {
+        this.sysModuleService = sysModuleService;
+    }
+
+    public void setSysActionService(ISysActionService sysActionService) {
+        this.sysActionService = sysActionService;
     }
 
     public List<SysTree> getSysTreeListByParentId(int parentId) {
@@ -52,8 +64,8 @@ public class SysTreeService extends BaseService<SysTree, Integer> implements ISy
         node.setParentId(sysTreeNode.getParentId());
         List children = getSysTreeListByParentId(sysTreeNode.getSysTreeId());
         node.setIsParent(children.size()>0);
-        SysModule sysModule = ServiceManager.sysModuleService.getSysModuleBySysModuleId(sysTreeNode.getSysModuleId());
-        SysAction sysAction = ServiceManager.sysActionService.getSysActionBySysActionId(sysModule.getDefaultActionId());
+        SysModule sysModule = sysModuleService.getSysModuleBySysModuleId(sysTreeNode.getSysModuleId());
+        SysAction sysAction = sysActionService.getSysActionBySysActionId(sysModule.getDefaultActionId());
         node.setObject(sysAction);
         return node;
     }

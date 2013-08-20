@@ -15,5 +15,6 @@
     <bean id="sysUserService" class="com.sdhery.module.user.service.impl.SysUserService">
         <property name="idGenerator" ref="mysqlIDGenerator"/>
         <property name="sysUserDao" ref="sysUserDao"/>
+        <property name="sysObjectKeyService" ref="sysObjectKeyService"/>
     </bean>
 </beans>

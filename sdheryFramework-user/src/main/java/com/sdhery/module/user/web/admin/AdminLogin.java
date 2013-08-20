@@ -9,6 +9,7 @@ import com.sdhery.module.user.service.ISysUserService;
 import com.sdhery.module.user.util.SysUserCookieUtil;
 import com.sdhery.module.user.vo.SysUserVo;
 import org.apache.shiro.SecurityUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,15 +27,16 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Controller
 public class AdminLogin extends BaseController {
-
+    @Autowired
+    ISysUserService sysUserService;
     @RequestMapping(value = "/admin/loginOK")
     public @ResponseBody ModelMap loginOk(SysUserVo sysUserVo,HttpServletRequest request,HttpServletResponse response) {
         ModelMap modelMap = new ModelMap();
         try {
-            int result = ServiceManager.sysUserService.loginResult(sysUserVo.getLoginId(), sysUserVo.getPassword(), ISysUserService.TARGET_SYSTEM);
+            int result = sysUserService.loginResult(sysUserVo.getLoginId(), sysUserVo.getPassword(), ISysUserService.TARGET_SYSTEM);
             if(result==ISysUserService.LOGIN_SUCCESSFUL){
                 setSuccess(modelMap);
-                SysUser sysUser = ServiceManager.sysUserService.getSysUserByKey(sysUserVo.getLoginId());
+                SysUser sysUser = sysUserService.getSysUserByKey(sysUserVo.getLoginId());
                 SysUserCookieUtil.addAdminCookie(sysUser, request, response);
                 AdminUserToken adminUserToken = new AdminUserToken(sysUserVo.getLoginId(),sysUserVo.getPassword());
                 SecurityUtils.getSubject().login(adminUserToken);
