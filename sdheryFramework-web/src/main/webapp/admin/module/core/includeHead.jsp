@@ -18,7 +18,7 @@
                         <a class="btn btn-inverse"><i class="icon-user icon-white"></i>&nbsp;&nbsp;${sysUser.loginId}</a>
                         <a href="#" id="drop3" role="button" class="btn btn-inverse dropdown-toggle" data-toggle="dropdown"><b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">退出</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="${frontPath}/admin/loginOut">退出</a></li>
                         </ul>
                     </div>
                 </ul>

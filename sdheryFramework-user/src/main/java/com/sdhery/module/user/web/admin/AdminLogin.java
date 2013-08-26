@@ -9,6 +9,7 @@ import com.sdhery.module.user.service.ISysUserService;
 import com.sdhery.module.user.util.SysUserCookieUtil;
 import com.sdhery.module.user.vo.SysUserVo;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -48,5 +49,13 @@ public class AdminLogin extends BaseController {
             e.printStackTrace();
         }
         return modelMap;
+    }
+
+    @RequestMapping(value = "/admin/loginOut")
+    public String loginOut(HttpServletRequest request,HttpServletResponse response) throws Exception {
+        Subject admin = SecurityUtils.getSubject();
+        admin.logout();
+        SysUserCookieUtil.removeCookie(request, response, SysUserCookieUtil.adminLoginKey);
+        return "redirect:/admin/login.jsp";
     }
 }
