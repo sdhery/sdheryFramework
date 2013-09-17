@@ -22,4 +22,9 @@
         <property name="idGenerator" ref="mysqlIDGenerator"/>
         <property name="sysActionDao" ref="sysActionDao"/>
     </bean>
+
+    <bean id="sysResourceService" class="com.sdhery.module.privilege.service.impl.SysResourceService">
+        <property name="idGenerator" ref="mysqlIDGenerator"/>
+        <property name="sysResourceDao" ref="sysResourceDao"/>
+    </bean>
 </beans>
