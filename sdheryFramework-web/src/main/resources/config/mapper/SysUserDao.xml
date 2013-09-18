@@ -14,7 +14,7 @@
     <sql id="Base_Column_List">SYS_USER_ID,LOGIN_ID,PASSWORD_HASH,RANDOM,IS_ADMIN,STATE</sql>
 
     <insert id="insert" parameterType="com.sdhery.module.user.domain.SysUser">
-        insert into sys_user(<include refid="Base_Column_List"/>) values (#{sysUserId},#{loginId},#{passwordHash},#{random},#{state})
+        insert into sys_user(<include refid="Base_Column_List"/>) values (#{sysUserId},#{loginId},#{passwordHash},#{random},#{isAdmin},#{state})
     </insert>
 
     <select id="getById" resultMap="BaseResultMap" resultType="java.lang.Integer">
