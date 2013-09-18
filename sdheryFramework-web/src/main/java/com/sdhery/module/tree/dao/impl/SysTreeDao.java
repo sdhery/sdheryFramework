@@ -3,6 +3,7 @@ package com.sdhery.module.tree.dao.impl;
 import com.sdhery.module.core.dao.impl.BaseMybatisDao;
 import com.sdhery.module.tree.dao.ISysTreeDao;
 import com.sdhery.module.tree.domain.SysTree;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
 * @author sdhery
 * @Date:2013-06-22 14:58:20
 */
+@Service
 public class SysTreeDao extends BaseMybatisDao<SysTree, Integer> implements ISysTreeDao{
     public List<SysTree> getSysTreeListByParentId(int parentId) {
         return getSqlSession().selectList(SysTreeDao.class.getName() + ".getSysTreeListByParentId", parentId);

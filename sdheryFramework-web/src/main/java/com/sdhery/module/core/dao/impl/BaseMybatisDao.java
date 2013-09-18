@@ -9,7 +9,10 @@ import com.sdhery.module.core.util.spring.SpringContextHolder;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -39,6 +42,11 @@ public abstract class BaseMybatisDao<E, PK extends Serializable> extends SqlSess
             genType = typeCls.getGenericSuperclass();
         }
         this.entityClass = ((Class) ((ParameterizedType) genType).getActualTypeArguments()[0]);
+    }
+
+    @Autowired
+    public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
+        super.setSqlSessionFactory(sqlSessionFactory);
     }
 
     public E getById(PK pk) {

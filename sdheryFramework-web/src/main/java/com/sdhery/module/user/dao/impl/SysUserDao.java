@@ -3,6 +3,7 @@ package com.sdhery.module.user.dao.impl;
 import com.sdhery.module.core.dao.impl.BaseMybatisDao;
 import com.sdhery.module.user.dao.ISysUserDao;
 import com.sdhery.module.user.domain.SysUser;
+import org.springframework.stereotype.Service;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,7 +13,7 @@ import com.sdhery.module.user.domain.SysUser;
  * To change this template use File | Settings | File Templates.
  */
 
-
+@Service
 public class SysUserDao  extends BaseMybatisDao<SysUser, Integer> implements ISysUserDao{
     public SysUser getSysUserByLoginId(String loginId){
         return getSqlSession().selectOne(SysUserDao.class.getName() + ".getSysUserByLoginId", loginId);

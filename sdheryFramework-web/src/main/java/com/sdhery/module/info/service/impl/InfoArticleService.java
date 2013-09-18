@@ -7,6 +7,8 @@ import com.sdhery.module.core.service.impl.BaseService;
 import com.sdhery.module.info.dao.IInfoArticleDao;
 import com.sdhery.module.info.domain.InfoArticle;
 import com.sdhery.module.info.service.IInfoArticleService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
@@ -17,19 +19,16 @@ import java.util.List;
 * @author sdhery
 * @Date:2013-07-09 10:41:16
 */
+@Service
 public class InfoArticleService extends BaseService<InfoArticle, Integer> implements IInfoArticleService {
+    @Autowired
     IInfoArticleDao infoArticleDao;
-
-    public void setInfoArticleDao(IInfoArticleDao infoArticleDao) {
-        this.infoArticleDao = infoArticleDao;
-    }
 
     protected EntityDao<InfoArticle, Integer> getEntityDao() {
         return infoArticleDao;
     }
 
     public int addInfoArticle(InfoArticle infoArticle) throws Exception {
-        infoArticle.setInfoArticleId(getIdGenerator().getId("inf_article"));
         infoArticle.setCreateTime(new Date());
         return infoArticleDao.insert(infoArticle);
     }

@@ -19,4 +19,7 @@
         <property name="mapperLocations" value="classpath*:config/mapper/*.xml"/>
     </bean>
 
+    <context:component-scan base-package="com.sdhery.module.*.dao" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+    </context:component-scan>
 </beans>

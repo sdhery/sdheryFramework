@@ -4,6 +4,7 @@ import com.sdhery.module.core.commons.Condition;
 import com.sdhery.module.core.dao.impl.BaseMybatisDao;
 import com.sdhery.module.info.dao.IInfoArticleDao;
 import com.sdhery.module.info.domain.InfoArticle;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -13,5 +14,6 @@ import java.util.List;
 * @author sdhery
 * @Date:2013-07-09 10:41:16
 */
+@Service
 public class InfoArticleDao extends BaseMybatisDao<InfoArticle, Integer> implements IInfoArticleDao{
 }

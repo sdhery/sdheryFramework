@@ -4,6 +4,8 @@ import com.sdhery.module.core.dao.EntityDao;
 import com.sdhery.module.core.dao.ISysObjectKeyDao;
 import com.sdhery.module.core.domain.SysObjectKey;
 import com.sdhery.module.core.service.ISysObjectKeyService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,13 +15,10 @@ import com.sdhery.module.core.service.ISysObjectKeyService;
  * To change this template use File | Settings | File Templates.
  */
 
+@Service
 public class SysObjectKeyService extends BaseService<SysObjectKey,String> implements ISysObjectKeyService {
-
+    @Autowired
     private ISysObjectKeyDao sysObjectKeyDao;
-
-    public void setSysObjectKeyDao(ISysObjectKeyDao sysObjectKeyDao) {
-        this.sysObjectKeyDao = sysObjectKeyDao;
-    }
 
     protected EntityDao<SysObjectKey, String> getEntityDao() {
         return sysObjectKeyDao;

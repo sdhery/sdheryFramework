@@ -12,6 +12,8 @@ import com.sdhery.module.user.domain.SysUser;
 import com.sdhery.module.user.service.ISysUserService;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.security.NoSuchAlgorithmException;
 
@@ -22,15 +24,13 @@ import java.security.NoSuchAlgorithmException;
  * Time: 下午5:48
  * To change this template use File | Settings | File Templates.
  */
-
+@Service
 public class SysUserService extends BaseService<SysUser, Integer> implements ISysUserService {
 
+    @Autowired
     ISysUserDao sysUserDao;
+    @Autowired
     ISysObjectKeyService sysObjectKeyService;
-
-    public void setSysUserDao(ISysUserDao sysUserDao) {
-        this.sysUserDao = sysUserDao;
-    }
 
     protected EntityDao<SysUser, Integer> getEntityDao() {
         return sysUserDao;
@@ -38,10 +38,6 @@ public class SysUserService extends BaseService<SysUser, Integer> implements ISy
 
     public SysUser getSysUserByLoginId(String loginId) {
         return sysUserDao.getSysUserByLoginId(loginId);
-    }
-
-    public void setSysObjectKeyService(ISysObjectKeyService sysObjectKeyService) {
-        this.sysObjectKeyService = sysObjectKeyService;
     }
 
     public String getRealLoginKey(String fieldValue) {

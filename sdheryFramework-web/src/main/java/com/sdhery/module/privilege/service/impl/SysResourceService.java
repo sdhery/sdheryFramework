@@ -6,6 +6,8 @@ import com.sdhery.module.core.service.impl.BaseService;
 import com.sdhery.module.privilege.dao.ISysResourceDao;
 import com.sdhery.module.privilege.domain.SysResource;
 import com.sdhery.module.privilege.service.ISysResourceService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
 * @Title:实现业务操作类
@@ -13,12 +15,10 @@ import com.sdhery.module.privilege.service.ISysResourceService;
 * @author hqq
 * @Date:2013-09-17 15:22:30
 */
+@Service
 public class SysResourceService extends BaseService<SysResource, Integer> implements ISysResourceService {
+    @Autowired
     ISysResourceDao sysResourceDao;
-
-    public void setSysResourceDao(ISysResourceDao sysResourceDao) {
-        this.sysResourceDao = sysResourceDao;
-    }
 
     protected EntityDao<SysResource, Integer> getEntityDao() {
         return sysResourceDao;
