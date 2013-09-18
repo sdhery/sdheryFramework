@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sdhery.module.tree.dao.impl.SysTreeDao">
+
+    <resultMap id="BaseResultMap" type="com.sdhery.module.tree.domain.SysTree">
+        <id column="SYS_TREE_ID" property="sysTreeId"/>
+        <id column="PARENT_ID" property="parentId"/>
+        <id column="POS" property="pos"/>
+        <id column="SYS_TREE_NAME" property="sysTreeName"/>
+        <id column="SYS_MODULE_ID" property="sysModuleId"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">SYS_TREE_ID,PARENT_ID,POS,SYS_TREE_NAME,SYS_MODULE_ID</sql>
+
+    <insert id="insert" parameterType="com.sdhery.module.tree.domain.SysTree">
+        insert into sys_tree(SYS_TREE_ID,PARENT_ID,POS,SYS_TREE_NAME,SYS_MODULE_ID) values (#{sysTreeId},#{parentId},#{pos},#{sysTreeName},#{sysModuleId})
+    </insert>
+
+    <select id="getById" resultMap="BaseResultMap" resultType="java.lang.Integer">
+        SELECT <include refid="Base_Column_List" /> FROM sys_tree where SYS_TREE_ID = #{id}
+    </select>
+
+    <update id="update" parameterType="com.sdhery.module.tree.domain.SysTree">
+        UPDATE sys_tree set PARENT_ID=#{parentId},POS=#{pos},SYS_TREE_NAME=#{sysTreeName},SYS_MODULE_ID=#{sysModuleId} where SYS_TREE_ID=#{sysTreeId}
+    </update>
+
+    <delete id="deleteById" parameterType="java.lang.Integer">DELETE FROM sys_tree WHERE SYS_TREE_ID = #{id}</delete>
+
+    <select id="getSysTreeListByParentId" resultMap="BaseResultMap" resultType="java.lang.Integer">
+        SELECT <include refid="Base_Column_List" /> FROM sys_tree where PARENT_ID = #{parentId}
+    </select>
+</mapper>
