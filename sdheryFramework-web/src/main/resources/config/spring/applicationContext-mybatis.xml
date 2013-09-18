@@ -19,5 +19,4 @@
         <property name="mapperLocations" value="classpath*:config/mapper/*.xml"/>
     </bean>
 
-
 </beans>
