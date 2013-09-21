@@ -4,8 +4,24 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         version="2.0">
     <tlib-version>1.0</tlib-version>
-    <short-name>sysTree-tags</short-name>
-    <uri>http://sysTree-tags</uri>
+    <short-name>sdk</short-name>
+    <uri>http://sdk</uri>
 
+    <function>
+        <name>getAdminSysUser</name>
+        <function-class> com.sdhery.module.user.function.SysUserFunction</function-class>
+        <function-signature>com.sdhery.module.user.domain.SysUser getAdminSysUser(javax.servlet.http.HttpServletRequest)</function-signature>
+    </function>
 
+    <function>
+        <name>getSysTreeBySysTreeId</name>
+        <function-class> com.sdhery.module.tree.function.SysTreeFunction</function-class>
+        <function-signature>com.sdhery.module.tree.domain.SysTree getSysTreeBySysTreeId(int)</function-signature>
+    </function>
+
+    <function>
+        <name>getSysTreeListByParentId</name>
+        <function-class> com.sdhery.module.tree.function.SysTreeFunction</function-class>
+        <function-signature>java.util.List getSysTreeListByParentId(int)</function-signature>
+    </function>
 </taglib>
