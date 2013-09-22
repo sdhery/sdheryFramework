@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/FInclude/includeTaglibs.jsp" %>
 <%@taglib uri="/WEB-INF/shiro.tld" prefix="shiro"%>
-<c:set value="${sysUser:getAdminSysUser(pageContext.request)}" var="sysUser"/>
+<c:set value="${sdk:getAdminSysUser(pageContext.request)}" var="sysUser"/>
 <shiro:hasPermission name="security:change-password">ddd</shiro:hasPermission>
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">

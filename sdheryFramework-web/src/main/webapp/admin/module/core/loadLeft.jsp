@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/FInclude/includeTaglibs.jsp" %>
-<c:set value="${sysTree:getSysTreeBySysTreeId(param.parentId)}" var="sysTree"/>
+<c:set value="${sdk:getSysTreeBySysTreeId(param.parentId)}" var="sysTree"/>
 <div class="accordion">
         <div class="accordion-group">
             <div class="accordion-heading">
