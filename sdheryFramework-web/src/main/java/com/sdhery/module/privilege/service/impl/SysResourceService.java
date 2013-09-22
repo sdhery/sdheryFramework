@@ -9,6 +9,8 @@ import com.sdhery.module.privilege.service.ISysResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
 * @Title:实现业务操作类
 * @Description: 权限资源
@@ -22,5 +24,9 @@ public class SysResourceService extends BaseService<SysResource, Integer> implem
 
     protected EntityDao<SysResource, Integer> getEntityDao() {
         return sysResourceDao;
+    }
+
+    public List<SysResource> searchPermissionResource() {
+        return sysResourceDao.searchPermissionResource();
     }
 }
