@@ -6,6 +6,8 @@ import com.sdhery.module.privilege.domain.SysResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
 * @Title:数据库操作实现类
 * @Description: 权限资源
@@ -14,4 +16,7 @@ import org.springframework.stereotype.Service;
 */
 @Service
 public class SysResourceDao extends BaseMybatisDao<SysResource, Integer> implements ISysResourceDao{
+    public List<SysResource> searchPermissionResource() {
+        return getSqlSession().selectList(getDaoNameSpace(".searchPermissionResource"));
+    }
 }

@@ -42,6 +42,10 @@
         <if test="orderByClause != null">order by ${orderByClause}</if>
     </select>
 
+    <select id="searchPermissionResource" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/> FROM sys_resource WHERE RESOURCE_URL!='' AND PERMISSION!=''
+    </select>
+
     <sql id="simpleConditionWhere">
         <where>
             <if test="valid">

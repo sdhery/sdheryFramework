@@ -30,7 +30,6 @@ import java.util.Map;
 public abstract class BaseMybatisDao<E, PK extends Serializable> extends SqlSessionDaoSupport implements EntityDao<E, PK> {
     protected final Log log = LogFactory.getLog(getClass());
     private Class<E> entityClass;
-    private static Map<Class, String> pkFieldMp = new Hashtable();
     private static Map<Class, Boolean> idFieldMp = new Hashtable();
 
     public BaseMybatisDao() {
@@ -59,7 +58,7 @@ public abstract class BaseMybatisDao<E, PK extends Serializable> extends SqlSess
     }
 
     public int insert(E object) throws Exception {
-        if(isGeneratorDomain(object)){
+        if (isGeneratorDomain(object)) {
             generatorIdDomain(object);
         }
         return getSqlSession().insert(insertNameSpace(), object);
@@ -74,43 +73,48 @@ public abstract class BaseMybatisDao<E, PK extends Serializable> extends SqlSess
     }
 
     public int count(Condition condition) {
-        return (Integer)getSqlSession().selectOne(searchNameSpace(), condition);
+        return (Integer) getSqlSession().selectOne(searchNameSpace(), condition);
     }
 
     public String getByIdNameSpace() {
-        return getClass().getName() + ".getById";
+        return getDaoNameSpace(".getById");
     }
 
     public String deleteByIdNameSpace() {
-        return getClass().getName() + ".deleteById";
+        return getDaoNameSpace(".deleteById");
     }
 
     public String insertNameSpace() {
-        return getClass().getName() + ".insert";
+        return getDaoNameSpace(".update");
     }
 
     public String updateNameSpace() {
-        return getClass().getName() + ".update";
+        return getDaoNameSpace(".update");
     }
 
     public String searchNameSpace() {
-        return getClass().getName() + ".search";
+        return getDaoNameSpace(".search");
     }
 
     public String countNameSpace() {
-        return getClass().getName() + ".count";
+        return getDaoNameSpace(".count");
     }
 
-    private boolean isGeneratorDomain(Object source){
+
+    public String getDaoNameSpace(String method) {
+        return getClass().getName() + method;
+    }
+
+    private boolean isGeneratorDomain(Object source) {
         boolean result = false;
         Class<?> entityClass = ReflectionUtils.getTargetClass(source);
-        if(idFieldMp.get(entityClass)==null){
+        if (idFieldMp.get(entityClass) == null) {
             GeneratorId generatorId = ReflectionUtils.getAnnotation(entityClass, GeneratorId.class);
-            if(generatorId!=null){
-                result =  true;
+            if (generatorId != null) {
+                result = true;
             }
-            idFieldMp.put(entityClass,result);
-        }else {
+            idFieldMp.put(entityClass, result);
+        } else {
             result = idFieldMp.get(entityClass);
         }
         return result;
@@ -119,9 +123,8 @@ public abstract class BaseMybatisDao<E, PK extends Serializable> extends SqlSess
     private void generatorIdDomain(Object source) throws Exception {
         Class<?> entityClass = ReflectionUtils.getTargetClass(source);
         GeneratorId generatorId = ReflectionUtils.getAnnotation(entityClass, GeneratorId.class);
-        if(generatorId!=null){
+        if (generatorId != null) {
             String beanName = generatorId.beanName();
-            System.out.println("beanName=="+beanName);
             String tableName = generatorId.tableName();
             String filedName = generatorId.filedName();
             IIDGenerator iidGenerator = (IIDGenerator) SpringContextHolder.getBean(beanName);
