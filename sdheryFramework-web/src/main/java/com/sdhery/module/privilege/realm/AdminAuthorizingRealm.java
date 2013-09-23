@@ -7,6 +7,7 @@ import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.Permission;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
@@ -27,12 +28,18 @@ public class AdminAuthorizingRealm extends AuthorizingRealm {
         return new SimpleAuthenticationInfo(token.getUsername(), token.getPassword(), getName());
     }
 
-    /**
-     * 授权查询回调函数, 进行鉴权但缓存中无用户的授权信息时调用
-     */
+
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         String loginId = (String) getAvailablePrincipal(principals);
         System.out.println("loginId--"+loginId);
         return null;
+    }
+
+    /**
+     * 查找有无相应权限
+     */
+    public boolean isPermitted(PrincipalCollection principals, String permission) {
+        Permission p = getPermissionResolver().resolvePermission(permission);
+        return isPermitted(principals, p);
     }
 }

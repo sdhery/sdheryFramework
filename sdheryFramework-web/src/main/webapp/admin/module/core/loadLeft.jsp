@@ -11,6 +11,7 @@
             <div id="collapseOne" class="accordion-body collapse in">
                 <div class="accordion-inner">
                     <ul class="nav nav-list">
+                        <li><a href="${frontPath}/admin/info/list" target="contentFrame"><i class="icon-pencil"></i>所有信息</a></li>
                         <c:forEach items="${result}" var="sysTreeSecond">
                             <li><a href="${frontPath}${sysTreeSecond.object.actionUrl}" target="contentFrame"><i class="icon-pencil"></i>${sysTreeSecond.name}</a></li>
                         </c:forEach>
