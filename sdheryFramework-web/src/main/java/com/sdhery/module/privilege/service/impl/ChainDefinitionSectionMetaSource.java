@@ -4,6 +4,7 @@ import com.sdhery.module.privilege.domain.SysResource;
 import com.sdhery.module.privilege.service.ISysResourceService;
 import org.apache.shiro.config.Ini;
 import org.springframework.beans.factory.FactoryBean;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ import java.util.List;
 public class ChainDefinitionSectionMetaSource implements FactoryBean<Ini.Section> {
     //shiro默认的链接定义
     private String filterChainDefinitions;
+    @Autowired
     private ISysResourceService sysResourceService;
 
     public Ini.Section getObject() throws Exception {
@@ -25,7 +27,16 @@ public class ChainDefinitionSectionMetaSource implements FactoryBean<Ini.Section
         ini.load(filterChainDefinitions);
         Ini.Section section = ini.getSection(Ini.DEFAULT_SECTION_NAME);
         List<SysResource> sysResources = sysResourceService.searchPermissionResource();
+        for(SysResource sysResource : sysResources){
+            String resourceUrl = sysResource.getResourceUrl();
+            String permission = sysResource.getPermission();
+            section.put(resourceUrl,permission);
+        }
         return section;
+    }
+
+    public void setFilterChainDefinitions(String filterChainDefinitions) {
+        this.filterChainDefinitions = filterChainDefinitions;
     }
 
     public Class<?> getObjectType() {

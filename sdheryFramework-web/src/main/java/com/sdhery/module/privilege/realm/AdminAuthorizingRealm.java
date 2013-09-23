@@ -27,6 +27,9 @@ public class AdminAuthorizingRealm extends AuthorizingRealm {
         return new SimpleAuthenticationInfo(token.getUsername(), token.getPassword(), getName());
     }
 
+    /**
+     * 授权查询回调函数, 进行鉴权但缓存中无用户的授权信息时调用
+     */
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         String loginId = (String) getAvailablePrincipal(principals);
         System.out.println("loginId--"+loginId);
