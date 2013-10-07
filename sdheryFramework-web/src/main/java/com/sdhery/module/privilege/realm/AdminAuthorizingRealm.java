@@ -32,7 +32,7 @@ public class AdminAuthorizingRealm extends AuthorizingRealm {
 
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         String loginId = (String) getAvailablePrincipal(principals);
-        System.out.println("loginId--"+loginId);
+        System.out.println("loginId--" + loginId);
         return null;
     }
 
@@ -40,8 +40,8 @@ public class AdminAuthorizingRealm extends AuthorizingRealm {
      * 查找有无相应权限
      */
     public boolean isPermitted(PrincipalCollection principals, String permission) {
-        String loginId = (String)principals.getPrimaryPrincipal();
-        if(loginId.equals(PrivilegeCode.SUPERLOGINID.getCode())){
+        String loginId = (String) principals.getPrimaryPrincipal();
+        if (loginId.equals(PrivilegeCode.SUPERLOGINID.getCode())) {
             return true;
         }
         Permission p = getPermissionResolver().resolvePermission(permission);

@@ -13,4 +13,6 @@ import java.util.List;
 */
 public interface ISysResourceDao extends EntityDao<SysResource,Integer> {
     List<SysResource> searchPermissionResource();
+
+    List<SysResource> getSysMenuResource();
 }

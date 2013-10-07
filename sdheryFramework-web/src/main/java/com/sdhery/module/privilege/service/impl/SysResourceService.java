@@ -29,4 +29,8 @@ public class SysResourceService extends BaseService<SysResource, Integer> implem
     public List<SysResource> searchPermissionResource() {
         return sysResourceDao.searchPermissionResource();
     }
+
+    public List<SysResource> getSysMenuResource() {
+        return sysResourceDao.getSysMenuResource();
+    }
 }

@@ -14,4 +14,6 @@ import java.util.List;
 */
 public interface ISysResourceService extends IBaseService<SysResource, Integer> {
     List<SysResource> searchPermissionResource();
+
+    List<SysResource> getSysMenuResource();
 }

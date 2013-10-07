@@ -19,4 +19,8 @@ public class SysResourceDao extends BaseMybatisDao<SysResource, Integer> impleme
     public List<SysResource> searchPermissionResource() {
         return getSqlSession().selectList(getDaoNameSpace(".searchPermissionResource"));
     }
+
+    public List<SysResource> getSysMenuResource() {
+        return getSqlSession().selectList(getDaoNameSpace(".getSysMenuResource"));
+    }
 }
