@@ -1,5 +1,6 @@
 package com.sdhery.module.privilege.realm;
 
+import com.sdhery.module.privilege.code.PrivilegeCode;
 import com.sdhery.module.privilege.token.AdminUserToken;
 import org.apache.log4j.Logger;
 import org.apache.shiro.authc.AuthenticationException;
@@ -39,6 +40,10 @@ public class AdminAuthorizingRealm extends AuthorizingRealm {
      * 查找有无相应权限
      */
     public boolean isPermitted(PrincipalCollection principals, String permission) {
+        String loginId = (String)principals.getPrimaryPrincipal();
+        if(loginId.equals(PrivilegeCode.SUPERLOGINID.getCode())){
+            return true;
+        }
         Permission p = getPermissionResolver().resolvePermission(permission);
         return isPermitted(principals, p);
     }
