@@ -50,6 +50,10 @@
         SELECT <include refid="Base_Column_List"/> FROM sys_resource WHERE RESOURCE_URL='' AND PERMISSION=''
     </select>
 
+    <select id="getSysResourceByParentId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        SELECT <include refid="Base_Column_List"/> FROM sys_resource WHERE PARENT_ID=#{parentId}
+    </select>
+
     <sql id="simpleConditionWhere">
         <where>
             <if test="valid">

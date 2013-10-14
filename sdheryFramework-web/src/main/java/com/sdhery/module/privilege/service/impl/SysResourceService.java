@@ -33,4 +33,12 @@ public class SysResourceService extends BaseService<SysResource, Integer> implem
     public List<SysResource> getSysMenuResource() {
         return sysResourceDao.getSysMenuResource();
     }
+
+    public SysResource getSysResourceBySysResourceId(int sysResourceId) {
+        return sysResourceDao.getById(sysResourceId);
+    }
+
+    public List<SysResource> getSysResourceByParentId(int parentId) {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
 }

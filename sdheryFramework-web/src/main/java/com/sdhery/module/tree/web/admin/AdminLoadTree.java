@@ -2,6 +2,9 @@ package com.sdhery.module.tree.web.admin;
 
 import com.sdhery.module.core.web.BaseController;
 import com.sdhery.module.helper.ServiceManager;
+import com.sdhery.module.privilege.dao.ISysResourceDao;
+import com.sdhery.module.privilege.domain.SysResource;
+import com.sdhery.module.privilege.service.ISysResourceService;
 import com.sdhery.module.tree.service.ISysTreeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,12 +24,14 @@ import java.util.List;
 @Controller
 public class AdminLoadTree extends BaseController {
     @Autowired
-    ISysTreeService sysTreeService;
+    ISysResourceService sysResourceService;
 
     @RequestMapping(value = "/admin/loadMainLeftTree")
     String loadMainLeftTree(ModelMap modelMap,Integer parentId) {
-        List result = sysTreeService.getNodeListByParentId(parentId);
-        modelMap.put("result",result);
+        SysResource sysResource = sysResourceService.getSysResourceBySysResourceId(parentId);
+        List<SysResource> children = sysResourceService.getSysResourceByParentId(parentId);
+        modelMap.put("children",children);
+        modelMap.put("sysResource",sysResource);
         return "admin/module/core/loadLeft";
     }
 }

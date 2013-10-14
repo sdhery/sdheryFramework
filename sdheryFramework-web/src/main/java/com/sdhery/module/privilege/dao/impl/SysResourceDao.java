@@ -23,4 +23,8 @@ public class SysResourceDao extends BaseMybatisDao<SysResource, Integer> impleme
     public List<SysResource> getSysMenuResource() {
         return getSqlSession().selectList(getDaoNameSpace(".getSysMenuResource"));
     }
+
+    public List<SysResource> getSysResourceByParentId(int parentId) {
+        return getSqlSession().selectList(getDaoNameSpace(".getSysResourceByParentId"));
+    }
 }

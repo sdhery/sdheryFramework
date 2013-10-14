@@ -16,4 +16,8 @@ public interface ISysResourceService extends IBaseService<SysResource, Integer> 
     List<SysResource> searchPermissionResource();
 
     List<SysResource> getSysMenuResource();
+
+    SysResource getSysResourceBySysResourceId(int sysResourceId);
+
+    List<SysResource> getSysResourceByParentId(int parentId);
 }
