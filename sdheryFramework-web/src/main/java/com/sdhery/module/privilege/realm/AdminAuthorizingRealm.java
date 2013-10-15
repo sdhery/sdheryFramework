@@ -3,10 +3,7 @@ package com.sdhery.module.privilege.realm;
 import com.sdhery.module.privilege.code.PrivilegeCode;
 import com.sdhery.module.privilege.token.AdminUserToken;
 import org.apache.log4j.Logger;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.Permission;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -25,7 +22,7 @@ public class AdminAuthorizingRealm extends AuthorizingRealm {
 
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         log.info("doGetAuthenticationInfo....");
-        AdminUserToken token = (AdminUserToken) authenticationToken;
+        UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
         return new SimpleAuthenticationInfo(token.getUsername(), token.getPassword(), getName());
     }
 

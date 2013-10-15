@@ -1,19 +1,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/FInclude/includeTaglibs.jsp" %>
-<c:set value="${sdk:getSysTreeBySysTreeId(param.parentId)}" var="sysTree"/>
 <div class="accordion">
         <div class="accordion-group">
             <div class="accordion-heading">
                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                        ${sysTree.sysTreeName}
+                        ${sysResource.resourceTitle}
                 </a>
             </div>
             <div id="collapseOne" class="accordion-body collapse in">
                 <div class="accordion-inner">
                     <ul class="nav nav-list">
-                        <li><a href="${frontPath}/admin/info/list" target="contentFrame"><i class="icon-pencil"></i>所有信息</a></li>
-                        <c:forEach items="${result}" var="sysTreeSecond">
-                            <li><a href="${frontPath}${sysTreeSecond.object.actionUrl}" target="contentFrame"><i class="icon-pencil"></i>${sysTreeSecond.name}</a></li>
+                        <c:forEach items="${children}" var="sysResource">
+                            <li><a href="${frontPath}${sysResource.resourceUrl}" target="contentFrame"><i class="icon-pencil"></i>${sysResource.resourceTitle}</a></li>
                         </c:forEach>
                     </ul>
                 </div>

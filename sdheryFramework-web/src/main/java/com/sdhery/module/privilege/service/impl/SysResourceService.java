@@ -39,6 +39,6 @@ public class SysResourceService extends BaseService<SysResource, Integer> implem
     }
 
     public List<SysResource> getSysResourceByParentId(int parentId) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return sysResourceDao.getSysResourceByParentId(parentId);
     }
 }

@@ -9,6 +9,7 @@ import com.sdhery.module.user.service.ISysUserService;
 import com.sdhery.module.user.util.SysUserCookieUtil;
 import com.sdhery.module.user.vo.SysUserVo;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,10 +38,11 @@ public class AdminLogin extends BaseController {
             int result = sysUserService.loginResult(sysUserVo.getLoginId(), sysUserVo.getPassword(), ISysUserService.TARGET_SYSTEM);
             if(result==ISysUserService.LOGIN_SUCCESSFUL){
                 setSuccess(modelMap);
-                SysUser sysUser = sysUserService.getSysUserByKey(sysUserVo.getLoginId());
-                SysUserCookieUtil.addAdminCookie(sysUser, request, response);
-                AdminUserToken adminUserToken = new AdminUserToken(sysUserVo.getLoginId(),sysUserVo.getPassword());
-                SecurityUtils.getSubject().login(adminUserToken);
+                Subject currentUser = SecurityUtils.getSubject();
+                UsernamePasswordToken token = new UsernamePasswordToken(sysUserVo.getLoginId(),sysUserVo.getPassword());
+                token.setRememberMe(true);
+                //AdminUserToken adminUserToken = new AdminUserToken(sysUserVo.getLoginId(),sysUserVo.getPassword());
+                currentUser.login(token);
             }else{
                 modelMap.put("result", MessageSourceManager.getMessage("login.error." + result, request));
                 setFailure(modelMap);
