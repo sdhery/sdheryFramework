@@ -39,9 +39,7 @@ public class AdminLogin extends BaseController {
             if(result==ISysUserService.LOGIN_SUCCESSFUL){
                 setSuccess(modelMap);
                 Subject currentUser = SecurityUtils.getSubject();
-                UsernamePasswordToken token = new UsernamePasswordToken(sysUserVo.getLoginId(),sysUserVo.getPassword());
-                token.setRememberMe(true);
-                //AdminUserToken adminUserToken = new AdminUserToken(sysUserVo.getLoginId(),sysUserVo.getPassword());
+                AdminUserToken token = new AdminUserToken(sysUserVo.getLoginId(),sysUserVo.getPassword());
                 currentUser.login(token);
             }else{
                 modelMap.put("result", MessageSourceManager.getMessage("login.error." + result, request));
