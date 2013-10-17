@@ -1,14 +1,15 @@
 package com.sdhery.module.privilege.realm;
 
+
 import com.sdhery.module.privilege.code.PrivilegeCode;
 import com.sdhery.module.privilege.token.AdminUserToken;
-import org.apache.log4j.Logger;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.Permission;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 /**
  * Created with IntelliJ IDEA.
  * User: sdhery
@@ -17,7 +18,7 @@ import org.apache.shiro.subject.PrincipalCollection;
  * 后台安全认证实现类
  */
 public class AdminAuthorizingRealm extends AuthorizingRealm {
-    private Logger log = Logger.getLogger(getClass());
+    private Logger log = LoggerFactory.getLogger(getClass());
 
 
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
