@@ -15,7 +15,6 @@ public class SysTree extends BaseEntity {
     Integer parentId;//树的父ID
     Integer pos;//排序
     String sysTreeName;//树名称
-    Integer sysModuleId;//模块ID
 
     public Integer getSysTreeId() {
         return sysTreeId;
@@ -44,13 +43,5 @@ public class SysTree extends BaseEntity {
 
     public void setSysTreeName(String sysTreeName) {
         this.sysTreeName = sysTreeName;
-    }
-
-    public Integer getSysModuleId() {
-        return sysModuleId;
-    }
-
-    public void setSysModuleId(Integer sysModuleId) {
-        this.sysModuleId = sysModuleId;
     }
 }
