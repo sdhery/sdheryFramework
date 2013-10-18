@@ -12,7 +12,7 @@
     <sql id="Base_Column_List">SYS_TREE_ID,PARENT_ID,POS,SYS_TREE_NAME</sql>
 
     <insert id="insert" parameterType="com.sdhery.module.tree.domain.SysTree">
-        insert into sys_tree(SYS_TREE_ID,PARENT_ID,POS,SYS_TREE_NAME) values (#{sysTreeId},#{parentId},#{pos},#{sysTreeName})
+        insert into sys_tree(<include refid="Base_Column_List" />) values (#{sysTreeId},#{parentId},#{pos},#{sysTreeName})
     </insert>
 
     <select id="getById" resultMap="BaseResultMap" resultType="java.lang.Integer">

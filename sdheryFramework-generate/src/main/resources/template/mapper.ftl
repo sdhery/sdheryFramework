@@ -11,7 +11,7 @@
     <sql id="Base_Column_List"><#list columnList as column>${column.fieldDbName}<#if column_has_next>,</#if></#list></sql>
 
     <insert id="insert" parameterType="${codeVo.packageValue}.domain.${codeVo.domain}">
-        insert into ${codeVo.tableName}(<#list columnList as column>${column.fieldDbName}<#if column_has_next>,</#if></#list>) values (<#list columnList as column>${'#\{'}${column.fieldName}${'}'}<#if column_has_next>,</#if></#list>)
+        insert into ${codeVo.tableName}(<include refid="Base_Column_List" />) values (<#list columnList as column>${'#\{'}${column.fieldName}${'}'}<#if column_has_next>,</#if></#list>)
     </insert>
 
     <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer">

@@ -14,7 +14,7 @@
     <sql id="Base_Column_List">SYS_RESOURCE_ID,RESOURCE_TITLE,RESOURCE_URL,PERMISSION,POS,PARENT_ID</sql>
 
     <insert id="insert" parameterType="com.sdhery.module.privilege.domain.SysResource">
-        insert into sys_resource(SYS_RESOURCE_ID,RESOURCE_TITLE,RESOURCE_URL,PERMISSION,POS,PARENT_ID) values (#{sysResourceId},#{resourceTitle},#{resourceUrl},#{permission},#{pos},#{parentId})
+        insert into sys_resource(<include refid="Base_Column_List" />) values (#{sysResourceId},#{resourceTitle},#{resourceUrl},#{permission},#{pos},#{parentId})
     </insert>
 
     <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
