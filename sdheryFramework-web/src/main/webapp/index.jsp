@@ -1,5 +1,4 @@
-<html>
-<body>
-<h2>Hello World!</h2>
-</body>
-</html>
+<div id="pjax-container">Hello pjax</div>
+<div class="container" >
+    Go to <a href="${frontPath}/index.jsp">next page</a>
+</div>
