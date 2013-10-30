@@ -1,5 +1,6 @@
 package com.sdhery.module.privilege.domain;
 
+import com.sdhery.module.core.annotate.GeneratorId;
 import com.sdhery.module.core.domain.BaseEntity;
 
 /**
@@ -9,6 +10,7 @@ import com.sdhery.module.core.domain.BaseEntity;
  * Time: 下午5:32
  * 权限角色
  */
+@GeneratorId(beanName ="mysqlIDGenerator",tableName = "sys_role",filedName = "sysRoleId")
 public class SysRole extends BaseEntity {
     private Integer sysRoleId;
     private String sysRoleName;

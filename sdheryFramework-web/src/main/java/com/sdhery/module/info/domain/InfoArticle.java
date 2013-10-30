@@ -1,5 +1,6 @@
 package com.sdhery.module.info.domain;
 
+import com.sdhery.module.core.annotate.GeneratorId;
 import com.sdhery.module.core.domain.BaseEntity;
 import java.util.Date;
 
@@ -9,7 +10,7 @@ import java.util.Date;
 * @author sdhery
 * @Date:2013-07-09 10:41:16
 */
-
+@GeneratorId(beanName ="mysqlIDGenerator",tableName = "inf_article",filedName = "infoArticleId")
 public class InfoArticle extends BaseEntity {
 
     Integer infoArticleId;//主键
