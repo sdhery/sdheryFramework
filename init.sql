@@ -30,7 +30,7 @@ CREATE TABLE `inf_article` (
 
 /*Data for the table `inf_article` */
 
-insert  into `inf_article`(`INFO_ARTICLE_ID`,`TITLE`,`CONTENT`,`CREATE_TIME`) values (10301,'你好你好你好你好','你好你好你好你好','2013-07-17 14:49:49'),(10300,'123','123','2013-07-17 14:49:34'),(10200,'好的','好的好的','2013-07-15 14:43:29'),(10400,'test2013-08-06今天','你好1','2013-08-06 00:00:00');
+insert  into `inf_article`(`INFO_ARTICLE_ID`,`TITLE`,`CONTENT`,`CREATE_TIME`) values (10301,'你好你好你好你好','你好你好你好你好','2013-07-17 14:49:49'),(10300,'123','123','2013-07-17 14:49:34'),(10200,'好的','好的好的','2013-07-15 14:43:29'),(10400,'test2013-08-06今天1','你好1','2013-08-06 00:00:00');
 
 /*Table structure for table `sys_action` */
 
@@ -59,7 +59,7 @@ CREATE TABLE `sys_ids` (
 
 /*Data for the table `sys_ids` */
 
-insert  into `sys_ids`(`TABLE_NAME`,`NEXT_VALUE`) values ('sys_tree',11000),('inf_article',10500),('sys_user',10100);
+insert  into `sys_ids`(`TABLE_NAME`,`NEXT_VALUE`) values ('sys_tree',11000),('inf_article',10500),('sys_user',10400);
 
 /*Table structure for table `sys_module` */
 
@@ -111,14 +111,28 @@ DROP TABLE IF EXISTS `sys_resource`;
 CREATE TABLE `sys_resource` (
   `SYS_RESOURCE_ID` int(11) NOT NULL,
   `RESOURCE_TITLE` varchar(256) COLLATE utf8_bin NOT NULL,
-  `RESOURCE_URL` varchar(256) COLLATE utf8_bin NOT NULL,
-  `PERMISSION` varchar(256) COLLATE utf8_bin DEFAULT NULL,
+  `RESOURCE_URL` varchar(256) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `PERMISSION` varchar(256) COLLATE utf8_bin DEFAULT '',
   `POS` int(2) DEFAULT NULL,
   `PARENT_ID` int(11) DEFAULT NULL,
   PRIMARY KEY (`SYS_RESOURCE_ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 /*Data for the table `sys_resource` */
+
+insert  into `sys_resource`(`SYS_RESOURCE_ID`,`RESOURCE_TITLE`,`RESOURCE_URL`,`PERMISSION`,`POS`,`PARENT_ID`) values (1,'后台管理','','',0,0),(2,'信息管理','','',0,1),(4,'所有信息','/admin/info/list','perms[info:list]',0,2),(3,'权限管理','','',0,1),(5,'管理员管理','','',0,3);
+
+/*Table structure for table `sys_role` */
+
+DROP TABLE IF EXISTS `sys_role`;
+
+CREATE TABLE `sys_role` (
+  `SYS_ROLE_ID` int(20) NOT NULL COMMENT '主键ID',
+  `SYS_ROLE_NAME` varchar(256) COLLATE utf8_bin NOT NULL COMMENT '角色名称',
+  PRIMARY KEY (`SYS_ROLE_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+/*Data for the table `sys_role` */
 
 /*Table structure for table `sys_tree` */
 
@@ -129,13 +143,12 @@ CREATE TABLE `sys_tree` (
   `PARENT_ID` int(11) NOT NULL COMMENT '树的父ID',
   `POS` int(3) DEFAULT NULL COMMENT '排序',
   `SYS_TREE_NAME` varchar(256) COLLATE utf8_bin NOT NULL COMMENT '树名称',
-  `SYS_MODULE_ID` int(11) NOT NULL DEFAULT '0' COMMENT '模块类型ID',
   PRIMARY KEY (`SYS_TREE_ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 /*Data for the table `sys_tree` */
 
-insert  into `sys_tree`(`SYS_TREE_ID`,`PARENT_ID`,`POS`,`SYS_TREE_NAME`,`SYS_MODULE_ID`) values (1,0,0,'后台管理',0),(2,1,0,'信息菜单根节点',0),(3,2,0,'信息管理',0),(5,3,0,'所有信息',2);
+insert  into `sys_tree`(`SYS_TREE_ID`,`PARENT_ID`,`POS`,`SYS_TREE_NAME`) values (1,0,0,'后台管理'),(2,1,0,'信息菜单根节点'),(3,2,0,'信息管理'),(5,3,0,'所有信息');
 
 /*Table structure for table `sys_user` */
 
@@ -153,7 +166,7 @@ CREATE TABLE `sys_user` (
 
 /*Data for the table `sys_user` */
 
-insert  into `sys_user`(`SYS_USER_ID`,`LOGIN_ID`,`PASSWORD_HASH`,`RANDOM`,`IS_ADMIN`,`STATE`) values (1,'root','9ed5lnOTnZihx7p8gaqaH2JT','0.7450066008495231',1,1);
+insert  into `sys_user`(`SYS_USER_ID`,`LOGIN_ID`,`PASSWORD_HASH`,`RANDOM`,`IS_ADMIN`,`STATE`) values (1,'root','9ed5lnOTnZihx7p8gaqaH2JT','0.7450066008495231',1,1),(10300,'root1','123456','111',1,1);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

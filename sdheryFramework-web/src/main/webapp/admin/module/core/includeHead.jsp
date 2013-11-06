@@ -25,6 +25,7 @@
                 <ul class="nav">
                     <li class="active"><a href="${frontPath}/admin/main.jsp">首页</a></li>
                     <li><a href="javascript:loadLeft('2');">信息</a></li>
+                    <li><a href="javascript:loadLeft('3');">权限</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>

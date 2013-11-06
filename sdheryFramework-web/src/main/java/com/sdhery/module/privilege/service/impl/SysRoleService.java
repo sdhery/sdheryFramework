@@ -4,6 +4,7 @@ import com.sdhery.module.core.dao.EntityDao;
 import com.sdhery.module.core.service.impl.BaseService;
 import com.sdhery.module.privilege.dao.ISysRoleDao;
 import com.sdhery.module.privilege.domain.SysRole;
+import com.sdhery.module.privilege.service.ISysRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Service;
  * 权限角色
  */
 @Service
-public class SysRoleService extends BaseService<SysRole, Integer> implements ISysRoleDao{
+public class SysRoleService extends BaseService<SysRole, Integer> implements ISysRoleService{
     @Autowired
     ISysRoleDao sysRoleDao;
 
