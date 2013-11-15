@@ -1,16 +1,27 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: sdhery
-  Date: 13-11-6
-  Time: 下午5:50
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@ include file="/FInclude/includeTaglibs.jsp" %>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title></title>
+    <c:import url="/admin/module/core/includePublicHtml.jsp"/>
 </head>
 <body>
-     ss
+<c:import url="includeTop.jsp?tag=1"/>
+<table class="table table-bordered table-hover table-striped table-condensed">
+    <thead>
+    <tr>
+        <th>角色名称</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach items="${list}" var="sysRole" varStatus="s">
+        <tr>
+            <td>${sysRole.sysRoleName}</td>
+            <td><a href="${frontPath}/admin/role/update?sysRoleId=${sysRole.sysRoleId}">修改</a></td>
+        </tr>
+    </c:forEach>
+    </tbody>
+</table>
 </body>
 </html>

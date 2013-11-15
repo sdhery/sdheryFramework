@@ -85,7 +85,7 @@ public abstract class BaseMybatisDao<E, PK extends Serializable> extends SqlSess
     }
 
     public String insertNameSpace() {
-        return getDaoNameSpace(".update");
+        return getDaoNameSpace(".insert");
     }
 
     public String updateNameSpace() {

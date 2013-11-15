@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
@@ -23,11 +24,33 @@ public class AdminRole {
     @Autowired
     ISysRoleService sysRoleService;
 
-    @RequestMapping(value = "/list")
+    @RequestMapping(value = "list")
     String list(ModelMap modelMap) throws Exception {
         List<SysRole> list = sysRoleService.search(null);
         modelMap.put("list",list);
         return "admin/module/role/list";
     }
 
+    @RequestMapping(value = "add")
+    String add(SysRole sysRole) throws Exception {
+        sysRoleService.insert(sysRole);
+        return "redirect:/admin/role/list";
+    }
+
+    @RequestMapping(value = "update",method = RequestMethod.GET)
+    String update(Integer sysRoleId,ModelMap map) throws Exception {
+        if(sysRoleId!=null){
+            SysRole sysRole = sysRoleService.getById(sysRoleId);
+            map.put("sysRole",sysRole);
+        }
+        return "admin/module/role/update";
+    }
+
+    @RequestMapping(value = "update",method = RequestMethod.POST)
+    String update(SysRole sysRole,ModelMap map) throws Exception {
+        if(sysRole.getSysRoleId()!=null){
+            sysRoleService.update(sysRole);
+        }
+        return "redirect:/admin/role/list";
+    }
 }
