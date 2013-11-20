@@ -59,7 +59,7 @@ CREATE TABLE `sys_ids` (
 
 /*Data for the table `sys_ids` */
 
-insert  into `sys_ids`(`TABLE_NAME`,`NEXT_VALUE`) values ('sys_tree',11000),('inf_article',10500),('sys_user',10400);
+insert  into `sys_ids`(`TABLE_NAME`,`NEXT_VALUE`) values ('sys_tree',11000),('inf_article',10500),('sys_user',10400),('sys_role',10300);
 
 /*Table structure for table `sys_module` */
 
@@ -120,7 +120,7 @@ CREATE TABLE `sys_resource` (
 
 /*Data for the table `sys_resource` */
 
-insert  into `sys_resource`(`SYS_RESOURCE_ID`,`RESOURCE_TITLE`,`RESOURCE_URL`,`PERMISSION`,`POS`,`PARENT_ID`) values (1,'后台管理','','',0,0),(2,'信息管理','','',0,1),(4,'所有信息','/admin/info/list','perms[info:list]',0,2),(3,'权限管理','','',0,1),(5,'管理员管理','','',0,3);
+insert  into `sys_resource`(`SYS_RESOURCE_ID`,`RESOURCE_TITLE`,`RESOURCE_URL`,`PERMISSION`,`POS`,`PARENT_ID`) values (1,'后台管理','','',0,0),(2,'信息管理','','',0,1),(4,'所有信息','/admin/info/list','perms[info:list]',0,2),(3,'权限管理','','',0,1),(5,'管理员管理','','',0,3),(6,'角色管理','/admin/role/list','perms[role:list]',0,3),(7,'分配权限','/admin/role/allot','perms[role:allot]',0,6);
 
 /*Table structure for table `sys_role` */
 
@@ -133,6 +133,8 @@ CREATE TABLE `sys_role` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 /*Data for the table `sys_role` */
+
+insert  into `sys_role`(`SYS_ROLE_ID`,`SYS_ROLE_NAME`) values (1,'超级管理员'),(10200,'t');
 
 /*Table structure for table `sys_tree` */
 
