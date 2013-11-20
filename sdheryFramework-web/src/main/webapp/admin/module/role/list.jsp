@@ -18,7 +18,7 @@
     <c:forEach items="${list}" var="sysRole" varStatus="s">
         <tr>
             <td>${sysRole.sysRoleName}</td>
-            <td><a href="${frontPath}/admin/role/update?sysRoleId=${sysRole.sysRoleId}">修改</a></td>
+            <td><a href="${frontPath}/admin/role/update?sysRoleId=${sysRole.sysRoleId}">修改</a>&nbsp;&nbsp;<a href="${frontPath}/admin/role/allot?sysRoleId=${sysRole.sysRoleId}">分配权限</a></td>
         </tr>
     </c:forEach>
     </tbody>

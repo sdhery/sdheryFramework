@@ -1,13 +1,16 @@
 package com.sdhery.module.privilege.web.admin;
 
 import com.sdhery.module.core.commons.Condition;
+import com.sdhery.module.privilege.domain.SysResource;
 import com.sdhery.module.privilege.domain.SysRole;
+import com.sdhery.module.privilege.service.ISysResourceService;
 import com.sdhery.module.privilege.service.ISysRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -23,6 +26,8 @@ import java.util.List;
 public class AdminRole {
     @Autowired
     ISysRoleService sysRoleService;
+    @Autowired
+    ISysResourceService sysResourceService;
 
     @RequestMapping(value = "list")
     String list(ModelMap modelMap) throws Exception {
@@ -52,5 +57,25 @@ public class AdminRole {
             sysRoleService.update(sysRole);
         }
         return "redirect:/admin/role/list";
+    }
+
+    @RequestMapping(value = "allot")
+    /**
+     * 分配权限
+     */
+    String allot(Integer sysRoleId) throws Exception {
+        return "admin/module/role/allot";
+    }
+
+    @RequestMapping(value = "loadSysResource")
+    @ResponseBody
+    ModelMap getSysResource(Integer parentId){
+        ModelMap map = new ModelMap();
+        if(parentId==null){
+
+        }
+        List<SysResource> sysResourceList = sysResourceService.getSysResourceByParentId(parentId);
+        map.addAllAttributes(sysResourceList);
+        return map;
     }
 }
