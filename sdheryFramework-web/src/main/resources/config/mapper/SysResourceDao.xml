@@ -54,6 +54,10 @@
         SELECT <include refid="Base_Column_List"/> FROM sys_resource WHERE PARENT_ID=#{parentId}
     </select>
 
+    <select id="getSysResourceByParentIdCount" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+        SELECT count(1) FROM sys_resource WHERE PARENT_ID=#{parentId}
+    </select>
+
     <sql id="simpleConditionWhere">
         <where>
             <if test="valid">

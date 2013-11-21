@@ -17,4 +17,6 @@ public interface ISysResourceDao extends EntityDao<SysResource,Integer> {
     List<SysResource> getSysMenuResource();
 
     List<SysResource> getSysResourceByParentId(int parentId);
+
+    Integer getSysResourceByParentIdCount(int parentId);
 }

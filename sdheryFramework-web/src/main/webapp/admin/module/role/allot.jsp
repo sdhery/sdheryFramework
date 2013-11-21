@@ -1,10 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page trimDirectiveWhitespaces="true" %>
 <%@ include file="/FInclude/includeTaglibs.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <link type="text/css" href="${frontPath}/js/JQueryzTreev3.5.14/css/zTreeStyle/zTreeStyle.css"/>
+    <link type="text/css" href="${frontPath}/js/JQueryzTreev3.5.14/css/zTreeStyle/zTreeStyle.css" rel="stylesheet"/>
     <c:import url="/admin/module/core/includePublicHtml.jsp"/>
     <script src="${frontPath}/js/JQueryzTreev3.5.14/js/jquery.ztree.all-3.5.min.js"></script>
     <script>
@@ -18,8 +17,8 @@
                     url:"${frontPath}/admin/role/loadSysResource",
                     autoParam:["id=parentId"]
                 },
-                callback:{
-
+                check: {
+                    enable: true
                 }
             };
             jQuery.fn.zTree.init(jQuery("#leftTree"), setting, null);

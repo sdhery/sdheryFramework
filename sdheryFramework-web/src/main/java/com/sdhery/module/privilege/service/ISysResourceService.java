@@ -20,4 +20,6 @@ public interface ISysResourceService extends IBaseService<SysResource, Integer> 
     SysResource getSysResourceBySysResourceId(int sysResourceId);
 
     List<SysResource> getSysResourceByParentId(int parentId);
+
+    Integer getSysResourceByParentIdCount(int parentId);
 }

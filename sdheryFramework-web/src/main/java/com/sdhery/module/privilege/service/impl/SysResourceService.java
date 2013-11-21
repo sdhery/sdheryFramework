@@ -41,4 +41,8 @@ public class SysResourceService extends BaseService<SysResource, Integer> implem
     public List<SysResource> getSysResourceByParentId(int parentId) {
         return sysResourceDao.getSysResourceByParentId(parentId);
     }
+
+    public Integer getSysResourceByParentIdCount(int parentId) {
+        return sysResourceDao.getSysResourceByParentIdCount(parentId);
+    }
 }
