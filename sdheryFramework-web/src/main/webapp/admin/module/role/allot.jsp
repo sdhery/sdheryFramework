@@ -26,9 +26,16 @@
         $(function(){
             init()
         })
+        var selectedNodes = function(){
+            var treeObj = $.fn.zTree.getZTreeObj("leftTree");
+            var nodes = treeObj.getCheckedNodes(true);
+            for(var i=0;i<nodes.length;i++){
+                alert(nodes[i].id)
+            }
+        }
     </script>
 </head>
 <body>
-<ul id="leftTree" class="ztree"></ul>
+<ul id="leftTree" class="ztree"></ul><a class="btn" onclick="selectedNodes()">提交</a>
 </body>
 </html>
