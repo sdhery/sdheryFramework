@@ -67,4 +67,8 @@
         </where>
     </sql>
 
+
+    <insert id="insertRoleSysResource" parameterType="java.util.HashMap">
+        insert into sys_role_sys_resource(SYS_ROLE_ID,SYS_RESOURCE_ID) values (${sysRoleId},${sysResourceId})
+    </insert>
 </mapper>
