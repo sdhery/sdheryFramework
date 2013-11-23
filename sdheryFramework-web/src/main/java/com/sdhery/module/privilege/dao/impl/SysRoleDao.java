@@ -1,10 +1,13 @@
 package com.sdhery.module.privilege.dao.impl;
 
+import com.sdhery.module.core.base.ConcurrentHashMapExt;
 import com.sdhery.module.core.dao.impl.BaseMybatisDao;
 import com.sdhery.module.privilege.dao.ISysRoleDao;
 import com.sdhery.module.privilege.domain.SysRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,4 +19,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class SysRoleDao extends BaseMybatisDao<SysRole, Integer> implements ISysRoleDao {
 
+    public int addRoleSysResource(ConcurrentHashMapExt hashMap) {
+        return getSqlSession().insert(getDaoNameSpace(".insertRoleSysResource"),hashMap);
+    }
 }

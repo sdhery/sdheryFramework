@@ -22,4 +22,6 @@ public interface ISysResourceService extends IBaseService<SysResource, Integer> 
     List<SysResource> getSysResourceByParentId(int parentId);
 
     Integer getSysResourceByParentIdCount(int parentId);
+
+    void allot(Integer sysRoleId,Integer[] sysResourceIds) throws Exception;
 }

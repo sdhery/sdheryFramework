@@ -1,9 +1,11 @@
 package com.sdhery.module.privilege.service.impl;
 
 
+import com.sdhery.module.core.base.ConcurrentHashMapExt;
 import com.sdhery.module.core.dao.EntityDao;
 import com.sdhery.module.core.service.impl.BaseService;
 import com.sdhery.module.privilege.dao.ISysResourceDao;
+import com.sdhery.module.privilege.dao.ISysRoleDao;
 import com.sdhery.module.privilege.domain.SysResource;
 import com.sdhery.module.privilege.service.ISysResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +23,8 @@ import java.util.List;
 public class SysResourceService extends BaseService<SysResource, Integer> implements ISysResourceService {
     @Autowired
     ISysResourceDao sysResourceDao;
-
+    @Autowired
+    ISysRoleDao sysRoleDao;
     protected EntityDao<SysResource, Integer> getEntityDao() {
         return sysResourceDao;
     }
@@ -44,5 +47,16 @@ public class SysResourceService extends BaseService<SysResource, Integer> implem
 
     public Integer getSysResourceByParentIdCount(int parentId) {
         return sysResourceDao.getSysResourceByParentIdCount(parentId);
+    }
+
+    public void allot(Integer sysRoleId, Integer[] sysResourceIds) throws Exception{
+        if(sysResourceIds!=null){
+            ConcurrentHashMapExt model = new ConcurrentHashMapExt();
+            for(Integer sysResourceId : sysResourceIds){
+                model.put("sysRoleId",sysRoleId);
+                model.put("sysResourceId",sysResourceId);
+                sysRoleDao.addRoleSysResource(model);
+            }
+        }
     }
 }

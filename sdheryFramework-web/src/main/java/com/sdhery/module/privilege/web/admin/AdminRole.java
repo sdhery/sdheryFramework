@@ -62,11 +62,22 @@ public class AdminRole {
         return "redirect:/admin/role/list";
     }
 
-    @RequestMapping(value = "allot")
+
     /**
      * 分配权限
      */
+    @RequestMapping(value = "allot")
     String allot(Integer sysRoleId) throws Exception {
+        return "admin/module/role/allot";
+    }
+
+    @RequestMapping(value = "allot", method = RequestMethod.POST)
+    String allot(Integer sysRoleId,Integer[] sysResourceIds){
+        try{
+            sysResourceService.allot(sysRoleId,sysResourceIds);
+        }catch (Exception e){
+
+        }
         return "admin/module/role/allot";
     }
 
