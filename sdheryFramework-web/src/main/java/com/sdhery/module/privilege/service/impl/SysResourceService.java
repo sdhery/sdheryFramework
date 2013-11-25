@@ -14,17 +14,18 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
-* @Title:实现业务操作类
-* @Description: 权限资源
-* @author hqq
-* @Date:2013-09-17 15:22:30
-*/
+ * @author hqq
+ * @Title:实现业务操作类
+ * @Description: 权限资源
+ * @Date:2013-09-17 15:22:30
+ */
 @Service
 public class SysResourceService extends BaseService<SysResource, Integer> implements ISysResourceService {
     @Autowired
     ISysResourceDao sysResourceDao;
     @Autowired
     ISysRoleDao sysRoleDao;
+
     protected EntityDao<SysResource, Integer> getEntityDao() {
         return sysResourceDao;
     }
@@ -49,14 +50,18 @@ public class SysResourceService extends BaseService<SysResource, Integer> implem
         return sysResourceDao.getSysResourceByParentIdCount(parentId);
     }
 
-    public void allot(Integer sysRoleId, Integer[] sysResourceIds) throws Exception{
-        if(sysResourceIds!=null){
-            ConcurrentHashMapExt model = new ConcurrentHashMapExt();
-            for(Integer sysResourceId : sysResourceIds){
-                model.put("sysRoleId",sysRoleId);
-                model.put("sysResourceId",sysResourceId);
-                sysRoleDao.addRoleSysResource(model);
-            }
+    public void allot(Integer sysRoleId, Integer[] sysResourceIds) throws Exception {
+        if(sysRoleId==null){
+            throw new Exception("角色ID为空");
+        }
+        if(sysResourceIds==null){
+            throw new Exception("资源ID为空");
+        }
+        ConcurrentHashMapExt model = new ConcurrentHashMapExt();
+        for (Integer sysResourceId : sysResourceIds) {
+            model.put("sysRoleId", sysRoleId);
+            model.put("sysResourceId", sysResourceId);
+            sysRoleDao.addRoleSysResource(model);
         }
     }
 }
