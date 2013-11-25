@@ -20,6 +20,6 @@ import java.util.HashMap;
 public class SysRoleDao extends BaseMybatisDao<SysRole, Integer> implements ISysRoleDao {
 
     public int addRoleSysResource(ConcurrentHashMapExt hashMap) {
-        return getSqlSession().insert(getDaoNameSpace(".insertRoleSysResource"),hashMap);
+        return getSqlSession().insert(getDaoNameSpace(".addRoleSysResource"),hashMap);
     }
 }

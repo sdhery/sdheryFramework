@@ -30,4 +30,8 @@
     <select id="getSysUserByLoginId" resultMap="BaseResultMap" resultType="java.lang.String">
         SELECT <include refid="Base_Column_List" /> FROM sys_user where LOGIN_ID = #{loginId}
     </select>
+
+    <select id="getAdminList" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List" /> FROM sys_user where IS_ADMIN = 1
+    </select>
 </mapper>

@@ -7,6 +7,8 @@ import com.sdhery.module.privilege.domain.SysRole;
 import com.sdhery.module.privilege.service.ISysResourceService;
 import com.sdhery.module.privilege.service.ISysRoleService;
 import com.sdhery.module.tree.vo.Node;
+import com.sdhery.module.user.domain.SysUser;
+import com.sdhery.module.user.service.ISysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -31,6 +33,8 @@ public class AdminRole {
     ISysRoleService sysRoleService;
     @Autowired
     ISysResourceService sysResourceService;
+    @Autowired
+    ISysUserService sysUserService;
 
     @RequestMapping(value = "list")
     String list(ModelMap modelMap) throws Exception {
@@ -71,12 +75,24 @@ public class AdminRole {
         return "admin/module/role/allot";
     }
 
+    @RequestMapping(value = "adminList")
+    String adminList(ModelMap map) throws Exception {
+        List<SysUser> userList = sysUserService.getAdminList();
+        map.put("userList",userList);
+        return "admin/module/role/adminList";
+    }
+
+    @RequestMapping(value = "adminAdd",method = RequestMethod.GET)
+    String adminAdd() throws Exception {
+        return "admin/module/role/adminAdd";
+    }
+
     @RequestMapping(value = "allot", method = RequestMethod.POST)
     String allot(Integer sysRoleId,Integer[] sysResourceIds){
         try{
             sysResourceService.allot(sysRoleId,sysResourceIds);
         }catch (Exception e){
-
+            e.printStackTrace();
         }
         return "admin/module/role/allot";
     }

@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -69,6 +70,10 @@ public class SysUserService extends BaseService<SysUser, Integer> implements ISy
             return ISysUserService.NOT_USER;
         }
         return findUser(user, password, target);
+    }
+
+    public List<SysUser> getAdminList() {
+        return sysUserDao.getAdminList();
     }
 
     protected int findUser(SysUser sysUser, String password, int target) throws NoSuchAlgorithmException {

@@ -3,6 +3,8 @@ package com.sdhery.module.user.dao;
 import com.sdhery.module.core.dao.EntityDao;
 import com.sdhery.module.user.domain.SysUser;
 
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: sdhery
@@ -12,4 +14,6 @@ import com.sdhery.module.user.domain.SysUser;
  */
 public interface ISysUserDao extends EntityDao<SysUser,Integer> {
     SysUser getSysUserByLoginId(String loginId);
+
+    List<SysUser> getAdminList();
 }

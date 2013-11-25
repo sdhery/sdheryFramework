@@ -4,6 +4,8 @@ package com.sdhery.module.user.service;
 import com.sdhery.module.core.service.IBaseService;
 import com.sdhery.module.user.domain.SysUser;
 
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: sdhery
@@ -53,4 +55,6 @@ public interface ISysUserService extends IBaseService<SysUser, Integer> {
     SysUser getSysUserBySysUserId(int sysUserId);
 
     int loginResult(String key, String password, int target) throws Exception;
+
+    List<SysUser> getAdminList();
 }

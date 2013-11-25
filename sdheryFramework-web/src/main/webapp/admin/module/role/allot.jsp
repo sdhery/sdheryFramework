@@ -29,13 +29,18 @@
         var selectedNodes = function(){
             var treeObj = $.fn.zTree.getZTreeObj("leftTree");
             var nodes = treeObj.getCheckedNodes(true);
+            var $allotFrom = $("#allotFrom")
+            $allotFrom.html("<input type='hidden' name='sysRoleId' value='${param.sysRoleId}'/>")
             for(var i=0;i<nodes.length;i++){
-                alert(nodes[i].id)
+                var hiddenHtml = "<input type='hidden' name='sysResourceIds' value='"+nodes[i].id+"'/>"
+                $allotFrom.append(hiddenHtml)
             }
+            $allotFrom.submit()
         }
     </script>
 </head>
 <body>
 <ul id="leftTree" class="ztree"></ul><a class="btn" onclick="selectedNodes()">提交</a>
+<form id="allotFrom" method="post" action="${frontPath}/admin/role/allot"></form>
 </body>
 </html>
