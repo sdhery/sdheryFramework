@@ -3,5 +3,5 @@
 <ul class="nav nav-tabs">
     <li class="${param.tag eq 1 ? 'active' : ''}"><a href="${frontPath}/admin/role/adminList">列表</a></li>
     <c:if test="${param.tag != 3}"><li class="${param.tag eq 2 ? 'active' : ''}"><a href="${frontPath}/admin/role/adminAdd">添加</a></li></c:if>
-    <c:if test="${param.tag eq 3}"><li class="${param.tag eq 3 ? 'active' : ''}"><a>修改1</a></li></c:if>
+    <c:if test="${param.tag eq 3}"><li class="${param.tag eq 3 ? 'active' : ''}"><a>修改</a></li></c:if>
 </ul>
