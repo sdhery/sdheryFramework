@@ -120,7 +120,7 @@ CREATE TABLE `sys_resource` (
 
 /*Data for the table `sys_resource` */
 
-insert  into `sys_resource`(`SYS_RESOURCE_ID`,`RESOURCE_TITLE`,`RESOURCE_URL`,`PERMISSION`,`POS`,`PARENT_ID`) values (1,'后台管理','','',0,0),(2,'信息管理','','',0,1),(4,'所有信息','/admin/info/list','perms[info:list]',0,2),(3,'权限管理','','',0,1),(5,'管理员管理','','',0,3),(6,'角色管理','/admin/role/list','perms[role:list]',0,3),(7,'分配权限','/admin/role/allot','perms[role:allot]',0,6);
+insert  into `sys_resource`(`SYS_RESOURCE_ID`,`RESOURCE_TITLE`,`RESOURCE_URL`,`PERMISSION`,`POS`,`PARENT_ID`) values (1,'后台管理','','',0,0),(2,'信息管理','','',0,1),(4,'所有信息','/admin/info/list','perms[info:list]',0,2),(3,'权限管理','','',0,1),(5,'管理员管理','/admin/role/adminList','perms[role:adminList]',0,3),(6,'角色管理','/admin/role/list','perms[role:list]',0,3),(7,'分配权限','/admin/role/allot','perms[role:allot]',0,6);
 
 /*Table structure for table `sys_role` */
 
@@ -135,6 +135,20 @@ CREATE TABLE `sys_role` (
 /*Data for the table `sys_role` */
 
 insert  into `sys_role`(`SYS_ROLE_ID`,`SYS_ROLE_NAME`) values (1,'超级管理员'),(10200,'t');
+
+/*Table structure for table `sys_role_sys_resource` */
+
+DROP TABLE IF EXISTS `sys_role_sys_resource`;
+
+CREATE TABLE `sys_role_sys_resource` (
+  `SYS_RESOURCE_ID` int(11) NOT NULL,
+  `SYS_ROLE_ID` int(11) NOT NULL,
+  PRIMARY KEY (`SYS_RESOURCE_ID`,`SYS_ROLE_ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+/*Data for the table `sys_role_sys_resource` */
+
+insert  into `sys_role_sys_resource`(`SYS_RESOURCE_ID`,`SYS_ROLE_ID`) values (1,10200);
 
 /*Table structure for table `sys_tree` */
 
@@ -168,7 +182,7 @@ CREATE TABLE `sys_user` (
 
 /*Data for the table `sys_user` */
 
-insert  into `sys_user`(`SYS_USER_ID`,`LOGIN_ID`,`PASSWORD_HASH`,`RANDOM`,`IS_ADMIN`,`STATE`) values (1,'root','9ed5lnOTnZihx7p8gaqaH2JT','0.7450066008495231',1,1),(10300,'root1','123456','111',1,1);
+insert  into `sys_user`(`SYS_USER_ID`,`LOGIN_ID`,`PASSWORD_HASH`,`RANDOM`,`IS_ADMIN`,`STATE`) values (1,'root','9ed5lnOTnZihx7p8gaqaH2JT','0.7450066008495231',1,1);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
