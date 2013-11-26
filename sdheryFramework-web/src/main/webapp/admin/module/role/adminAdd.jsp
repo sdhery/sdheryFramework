@@ -10,7 +10,7 @@
 <c:import url="adminIncludeTop.jsp?tag=2"/>
 <form class="form-horizontal well" method="post" action="${frontPath}/admin/role/adminAdd">
     <div class="control-group">
-        <label class="control-label">登录名：</label>
+        <label class="control-label">登录名1：</label>
         <div class="controls">
             <input type="text" name="loginId" placeholder="登录名" class="span4"/>
         </div>
