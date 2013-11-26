@@ -103,6 +103,11 @@ public class AdminRole {
         return "admin/module/role/allot";
     }
 
+    @RequestMapping(value = "roleDispatcher",method = RequestMethod.GET)
+    String roleDispatcher() throws Exception {
+        return "admin/module/role/roleDispatcher";
+    }
+
     @RequestMapping(value = "loadSysResource")
     @ResponseBody
     Object getSysResource(Integer parentId) {

@@ -40,6 +40,7 @@
     </script>
 </head>
 <body>
+<c:import url="includeTop.jsp"/>
 <ul id="leftTree" class="ztree"></ul><a class="btn" onclick="selectedNodes()">提交</a>
 <form id="allotFrom" method="post" action="${frontPath}/admin/role/allot"></form>
 </body>
