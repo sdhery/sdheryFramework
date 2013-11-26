@@ -57,4 +57,12 @@ public interface ISysUserService extends IBaseService<SysUser, Integer> {
     int loginResult(String key, String password, int target) throws Exception;
 
     List<SysUser> getAdminList();
+
+    /**
+     * 后台增加用户
+     * @param sysUser
+     * @return
+     */
+    int addAdmin(SysUser sysUser) throws Exception;
+
 }

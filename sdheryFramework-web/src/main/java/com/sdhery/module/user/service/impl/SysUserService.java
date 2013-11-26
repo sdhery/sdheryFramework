@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -74,6 +75,16 @@ public class SysUserService extends BaseService<SysUser, Integer> implements ISy
 
     public List<SysUser> getAdminList() {
         return sysUserDao.getAdminList();
+    }
+
+    public int addAdmin(SysUser sysUser) throws Exception{
+        sysUser.setIsAdmin(ISysUserService.USERTYPE_ISADMIN_YES);
+        String ran = String.valueOf(Math.random());
+        String passwordRan = sysUser.getPasswordHash() + ran;
+        String passwordHash = DigestUtil.digestString(passwordRan, "SHA");
+        sysUser.setRandom(ran);
+        sysUser.setPasswordHash(passwordHash);
+        return sysUserDao.insert(sysUser);
     }
 
     protected int findUser(SysUser sysUser, String password, int target) throws NoSuchAlgorithmException {

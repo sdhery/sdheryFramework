@@ -87,6 +87,11 @@ public class AdminRole {
         return "admin/module/role/adminAdd";
     }
 
+    @RequestMapping(value = "adminAdd",method = RequestMethod.POST)
+    String adminAdd(SysUser sysUser) throws Exception {
+        return "redirect:/admin/role/adminList";
+    }
+
     @RequestMapping(value = "allot", method = RequestMethod.POST)
     String allot(Integer sysRoleId,Integer[] sysResourceIds){
         try{
