@@ -89,6 +89,7 @@ public class AdminRole {
 
     @RequestMapping(value = "adminAdd",method = RequestMethod.POST)
     String adminAdd(SysUser sysUser) throws Exception {
+        sysUserService.addAdmin(sysUser);
         return "redirect:/admin/role/adminList";
     }
 

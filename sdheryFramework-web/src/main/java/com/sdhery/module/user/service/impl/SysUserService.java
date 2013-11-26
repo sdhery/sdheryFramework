@@ -84,6 +84,7 @@ public class SysUserService extends BaseService<SysUser, Integer> implements ISy
         String passwordHash = DigestUtil.digestString(passwordRan, "SHA");
         sysUser.setRandom(ran);
         sysUser.setPasswordHash(passwordHash);
+        sysUser.setState(ISysUserService.USER_ENABLE_YES);
         return sysUserDao.insert(sysUser);
     }
 

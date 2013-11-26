@@ -50,7 +50,7 @@
                 /admin/loginOK = anon
                 /admin/js/** = anon
                 /admin/style/** = anon
-                /admin/main.jsp = authc
+                /admin/** = authc
             </value>
         </property>
     </bean>
