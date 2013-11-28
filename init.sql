@@ -59,7 +59,7 @@ CREATE TABLE `sys_ids` (
 
 /*Data for the table `sys_ids` */
 
-insert  into `sys_ids`(`TABLE_NAME`,`NEXT_VALUE`) values ('sys_tree',11000),('inf_article',10500),('sys_user',10400),('sys_role',10300);
+insert  into `sys_ids`(`TABLE_NAME`,`NEXT_VALUE`) values ('sys_tree',11000),('inf_article',10500),('sys_user',10600),('sys_role',10300);
 
 /*Table structure for table `sys_module` */
 
@@ -136,6 +136,20 @@ CREATE TABLE `sys_role` (
 
 insert  into `sys_role`(`SYS_ROLE_ID`,`SYS_ROLE_NAME`) values (1,'超级管理员'),(10200,'t');
 
+/*Table structure for table `sys_role_dispatcher` */
+
+DROP TABLE IF EXISTS `sys_role_dispatcher`;
+
+CREATE TABLE `sys_role_dispatcher` (
+  `SYS_ROLE_DISPATCHER` int(11) NOT NULL,
+  `SYS_ROLE_ID` int(11) NOT NULL,
+  `OBJID` int(11) NOT NULL,
+  `OBJTYPE` int(1) NOT NULL,
+  PRIMARY KEY (`SYS_ROLE_DISPATCHER`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+/*Data for the table `sys_role_dispatcher` */
+
 /*Table structure for table `sys_role_sys_resource` */
 
 DROP TABLE IF EXISTS `sys_role_sys_resource`;
@@ -182,7 +196,7 @@ CREATE TABLE `sys_user` (
 
 /*Data for the table `sys_user` */
 
-insert  into `sys_user`(`SYS_USER_ID`,`LOGIN_ID`,`PASSWORD_HASH`,`RANDOM`,`IS_ADMIN`,`STATE`) values (1,'root','9ed5lnOTnZihx7p8gaqaH2JT','0.7450066008495231',1,1);
+insert  into `sys_user`(`SYS_USER_ID`,`LOGIN_ID`,`PASSWORD_HASH`,`RANDOM`,`IS_ADMIN`,`STATE`) values (1,'root','9ed5lnOTnZihx7p8gaqaH2JT','0.7450066008495231',1,1),(10500,'kf','hlp8MkM5R0MLGuMO/n+NLqHz','0.06539553077645355',1,1);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
