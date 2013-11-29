@@ -43,11 +43,17 @@ public class AdminRole {
         return "admin/module/role/list";
     }
 
-    @RequestMapping(value = "add")
+    @RequestMapping(value = "add",method = RequestMethod.POST)
     String add(SysRole sysRole) throws Exception {
         sysRoleService.insert(sysRole);
         return "redirect:/admin/role/list";
     }
+
+    @RequestMapping(value = "add",method = RequestMethod.GET)
+    String add() throws Exception {
+        return "admin/module/role/roleForm";
+    }
+
 
     @RequestMapping(value = "update", method = RequestMethod.GET)
     String update(Integer sysRoleId, ModelMap map) throws Exception {
@@ -59,7 +65,7 @@ public class AdminRole {
     }
 
     @RequestMapping(value = "update", method = RequestMethod.POST)
-    String update(SysRole sysRole, ModelMap map) throws Exception {
+    String update(SysRole sysRole) throws Exception {
         if (sysRole.getSysRoleId() != null) {
             sysRoleService.update(sysRole);
         }
