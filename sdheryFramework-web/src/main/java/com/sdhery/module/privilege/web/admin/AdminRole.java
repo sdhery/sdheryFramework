@@ -44,8 +44,10 @@ public class AdminRole {
     }
 
     @RequestMapping(value = "add",method = RequestMethod.POST)
-    String add(SysRole sysRole) throws Exception {
-        sysRoleService.insert(sysRole);
+    String add(SysRole sysRole,Integer[] sysResourceIds) throws Exception {
+        if(sysRoleService.insert(sysRole)==1){
+            sysResourceService.allot(sysRole.getSysRoleId(),sysResourceIds);
+        }
         return "redirect:/admin/role/list";
     }
 

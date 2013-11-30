@@ -23,4 +23,8 @@ public class SysRoleService extends BaseService<SysRole, Integer> implements ISy
     protected EntityDao<SysRole, Integer> getEntityDao() {
         return sysRoleDao;
     }
+
+    public void addSysSysRole(SysRole sysRole, Integer[] sysResourceIds) {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
 }

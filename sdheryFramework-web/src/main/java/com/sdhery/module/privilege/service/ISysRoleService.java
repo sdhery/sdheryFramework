@@ -11,4 +11,10 @@ import com.sdhery.module.privilege.domain.SysRole;
  * 权限角色
  */
 public interface ISysRoleService extends IBaseService<SysRole, Integer> {
+    /**
+     * 增加角色同时授权
+     * @param sysRole
+     * @param sysResourceIds
+     */
+    void addSysSysRole(SysRole sysRole,Integer[] sysResourceIds);
 }
