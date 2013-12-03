@@ -67,8 +67,15 @@
         </where>
     </sql>
 
-
     <insert id="addRoleSysResource" parameterType="com.sdhery.module.core.base.ConcurrentHashMapExt">
         insert into sys_role_sys_resource(SYS_ROLE_ID,SYS_RESOURCE_ID) values (${sysRoleId},${sysResourceId})
     </insert>
+
+    <select id="countRoleResource" resultType="java.lang.Integer" parameterType="com.sdhery.module.core.base.ConcurrentHashMapExt">
+        SELECT count(1) FROM sys_role_sys_resource WHERE SYS_ROLE_ID = ${sysRoleId} AND SYS_RESOURCE_ID = ${sysResourceId}
+    </select>
+
+    <delete id="deleteRoleResource" parameterType="java.lang.Integer">
+      DELETE FROM sys_role_sys_resource WHERE SYS_ROLE_ID = #{sysRoleId}
+    </delete>
 </mapper>

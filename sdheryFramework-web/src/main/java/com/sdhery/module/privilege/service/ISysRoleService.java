@@ -16,5 +16,11 @@ public interface ISysRoleService extends IBaseService<SysRole, Integer> {
      * @param sysRole
      * @param sysResourceIds
      */
-    void addSysSysRole(SysRole sysRole,Integer[] sysResourceIds);
+    void addSysSysRole(SysRole sysRole,Integer[] sysResourceIds) throws Exception;
+
+    boolean countRoleResource(int sysRoleId,int sysResourceId);
+
+    void updateSysSysRole(SysRole sysRole, Integer[] sysResourceIds) throws Exception;
+
+    int deleteRoleResource(Integer sysRoleId);
 }

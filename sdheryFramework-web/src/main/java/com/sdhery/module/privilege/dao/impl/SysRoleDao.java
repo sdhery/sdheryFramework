@@ -22,4 +22,12 @@ public class SysRoleDao extends BaseMybatisDao<SysRole, Integer> implements ISys
     public int addRoleSysResource(ConcurrentHashMapExt hashMap) {
         return getSqlSession().insert(getDaoNameSpace(".addRoleSysResource"),hashMap);
     }
+
+    public int countRoleResource(ConcurrentHashMapExt hashMap) {
+        return (Integer)getSqlSession().selectOne(getDaoNameSpace(".countRoleResource"),hashMap);
+    }
+
+    public int deleteRoleResource(Integer sysRoleId) {
+        return getSqlSession().delete(getDaoNameSpace(".deleteRoleResource"),sysRoleId);
+    }
 }

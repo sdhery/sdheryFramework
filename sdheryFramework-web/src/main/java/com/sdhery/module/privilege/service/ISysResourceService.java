@@ -1,8 +1,10 @@
 package com.sdhery.module.privilege.service;
 
 
+import com.sdhery.module.core.base.ConcurrentHashMapExt;
 import com.sdhery.module.core.service.IBaseService;
 import com.sdhery.module.privilege.domain.SysResource;
+import com.sdhery.module.privilege.domain.SysRole;
 
 import java.util.List;
 

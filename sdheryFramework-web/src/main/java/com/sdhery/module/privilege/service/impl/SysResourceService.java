@@ -7,6 +7,7 @@ import com.sdhery.module.core.service.impl.BaseService;
 import com.sdhery.module.privilege.dao.ISysResourceDao;
 import com.sdhery.module.privilege.dao.ISysRoleDao;
 import com.sdhery.module.privilege.domain.SysResource;
+import com.sdhery.module.privilege.domain.SysRole;
 import com.sdhery.module.privilege.service.ISysResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -64,4 +65,6 @@ public class SysResourceService extends BaseService<SysResource, Integer> implem
             sysRoleDao.addRoleSysResource(model);
         }
     }
+
+
 }

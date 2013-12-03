@@ -15,4 +15,8 @@ import java.util.HashMap;
  */
 public interface ISysRoleDao extends EntityDao<SysRole,Integer> {
     int addRoleSysResource(ConcurrentHashMapExt hashMap);
+
+    int countRoleResource(ConcurrentHashMapExt hashMap);
+
+    int deleteRoleResource(Integer sysRoleId);
 }
