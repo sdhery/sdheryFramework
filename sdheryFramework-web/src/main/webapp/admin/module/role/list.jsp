@@ -18,7 +18,7 @@
     <c:forEach items="${list}" var="sysRole" varStatus="s">
         <tr>
             <td>${sysRole.sysRoleName}</td>
-            <td><a href="${frontPath}/admin/role/update?sysRoleId=${sysRole.sysRoleId}">修改</a></td>
+            <td><c:if test ="${sysRole.sysRoleId != 1}"><a href="${frontPath}/admin/role/update?sysRoleId=${sysRole.sysRoleId}">修改</a></c:if></td>
         </tr>
     </c:forEach>
     </tbody>
