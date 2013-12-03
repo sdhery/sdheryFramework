@@ -60,6 +60,7 @@ public class AdminRole {
         if (sysRoleId != null) {
             SysRole sysRole = sysRoleService.getById(sysRoleId);
             map.put("sysRole", sysRole);
+            map.put("sysRoleSysResource", sysRoleService.searchRoleSysResource(sysRoleId));
         }
         return "admin/module/role/roleForm";
     }

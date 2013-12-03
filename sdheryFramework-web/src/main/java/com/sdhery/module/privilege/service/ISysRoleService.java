@@ -3,6 +3,8 @@ package com.sdhery.module.privilege.service;
 import com.sdhery.module.core.service.IBaseService;
 import com.sdhery.module.privilege.domain.SysRole;
 
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: sdhery
@@ -23,4 +25,6 @@ public interface ISysRoleService extends IBaseService<SysRole, Integer> {
     void updateSysSysRole(SysRole sysRole, Integer[] sysResourceIds) throws Exception;
 
     int deleteRoleResource(Integer sysRoleId);
+
+    List<Integer> searchRoleSysResource(Integer sysRoleId);
 }

@@ -10,6 +10,8 @@ import com.sdhery.module.privilege.service.ISysRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: sdhery
@@ -68,5 +70,9 @@ public class SysRoleService extends BaseService<SysRole, Integer> implements ISy
 
     public int deleteRoleResource(Integer sysRoleId) {
         return sysRoleDao.deleteRoleResource(sysRoleId);
+    }
+
+    public List<Integer> searchRoleSysResource(Integer sysRoleId) {
+        return sysRoleDao.searchRoleSysResource(sysRoleId);
     }
 }
