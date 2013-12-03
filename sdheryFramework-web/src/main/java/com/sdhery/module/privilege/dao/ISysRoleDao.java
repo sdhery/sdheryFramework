@@ -5,6 +5,7 @@ import com.sdhery.module.core.dao.EntityDao;
 import com.sdhery.module.privilege.domain.SysRole;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -19,4 +20,6 @@ public interface ISysRoleDao extends EntityDao<SysRole,Integer> {
     int countRoleResource(ConcurrentHashMapExt hashMap);
 
     int deleteRoleResource(Integer sysRoleId);
+
+    List<Integer> searchRoleSysResource(Integer sysRoleId);
 }

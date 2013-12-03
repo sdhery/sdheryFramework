@@ -78,4 +78,9 @@
     <delete id="deleteRoleResource" parameterType="java.lang.Integer">
       DELETE FROM sys_role_sys_resource WHERE SYS_ROLE_ID = #{sysRoleId}
     </delete>
+
+    <select id="searchRoleSysResource" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+        SELECT SYS_RESOURCE_ID FROM sys_role_sys_resource WHERE SYS_ROLE_ID = ${sysRoleId}
+    </select>
+
 </mapper>

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -29,5 +30,9 @@ public class SysRoleDao extends BaseMybatisDao<SysRole, Integer> implements ISys
 
     public int deleteRoleResource(Integer sysRoleId) {
         return getSqlSession().delete(getDaoNameSpace(".deleteRoleResource"),sysRoleId);
+    }
+
+    public List<Integer> searchRoleSysResource(Integer sysRoleId) {
+        return getSqlSession().selectList(getDaoNameSpace(".searchRoleSysResource"),sysRoleId);
     }
 }
