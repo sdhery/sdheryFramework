@@ -33,8 +33,7 @@ public class AdminRole {
     ISysRoleService sysRoleService;
     @Autowired
     ISysResourceService sysResourceService;
-    @Autowired
-    ISysUserService sysUserService;
+
 
     @RequestMapping(value = "list")
     String list(ModelMap modelMap) throws Exception {
@@ -82,23 +81,7 @@ public class AdminRole {
         return "admin/module/role/allot";
     }
 
-    @RequestMapping(value = "adminList")
-    String adminList(ModelMap map) throws Exception {
-        List<SysUser> userList = sysUserService.getAdminList();
-        map.put("userList",userList);
-        return "admin/module/role/adminList";
-    }
 
-    @RequestMapping(value = "adminAdd",method = RequestMethod.GET)
-    String adminAdd() throws Exception {
-        return "admin/module/role/adminAdd";
-    }
-
-    @RequestMapping(value = "adminAdd",method = RequestMethod.POST)
-    String adminAdd(SysUser sysUser) throws Exception {
-        sysUserService.addAdmin(sysUser);
-        return "redirect:/admin/role/adminList";
-    }
 
     @RequestMapping(value = "allot", method = RequestMethod.POST)
     String allot(Integer sysRoleId,Integer[] sysResourceIds){
