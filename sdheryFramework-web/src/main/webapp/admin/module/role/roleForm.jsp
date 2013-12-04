@@ -8,9 +8,13 @@
     <c:import url="/admin/module/core/includePublicHtml.jsp"/>
     <script src="${frontPath}/js/JQueryzTreev3.5.14/js/jquery.ztree.all-3.5.min.js"></script>
     <script>
+        var existNodes = "<c:forEach items="${sysRoleSysResource}" var="id" varStatus="s">-${id}-</c:forEach>"
         function init() {
-             var nodeCreate = function(event, treeId, treeNode) {
+            var nodeCreate = function (event, treeId, treeNode) {
                 var zTree = $.fn.zTree.getZTreeObj("leftTree");
+                if (existNodes.indexOf("-" + treeNode.id + "-") >= 0) {
+                    zTree.checkNode(treeNode, true);
+                }
                 zTree.reAsyncChildNodes(treeNode, "1");
             }
 
@@ -20,14 +24,14 @@
                 },
                 async: {
                     enable: true,
-                    url: "${frontPath}/admin/role/loadSysResource<c:if test="${not empty sysRole}">?sysRoleId=${sysRole.sysRoleId}</c:if>",
+                    url: "${frontPath}/admin/role/loadSysResource",
                     autoParam: ["id=parentId"]
                 },
                 check: {
                     enable: true
                 },
                 callback: {
-                    onNodeCreated:nodeCreate
+                    onNodeCreated: nodeCreate
                 }
             };
             jQuery.fn.zTree.init(jQuery("#leftTree"), setting, null);
@@ -53,8 +57,10 @@
 </head>
 <body>
 <c:import url="includeTop.jsp?tag=2"/>
-<form class="form-horizontal well" method="post" action="${frontPath}/admin/role/${empty sysRole ? "add" : "update"}" onsubmit="return checkForm(this)">
+<form class="form-horizontal well" method="post" action="${frontPath}/admin/role/${empty sysRole ? "add" : "update"}"
+      onsubmit="return checkForm(this)">
     <input type="hidden" name="sysRoleId" value="${sysRole.sysRoleId}"/>
+
     <div class="control-group">
         <label class="control-label">角色名称：</label>
 

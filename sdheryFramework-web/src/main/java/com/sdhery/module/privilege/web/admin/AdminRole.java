@@ -72,27 +72,6 @@ public class AdminRole {
         return "redirect:/admin/role/list";
     }
 
-
-    /**
-     * 分配权限
-     */
-    @RequestMapping(value = "allot")
-    String allot(Integer sysRoleId) throws Exception {
-        return "admin/module/role/allot";
-    }
-
-
-
-    @RequestMapping(value = "allot", method = RequestMethod.POST)
-    String allot(Integer sysRoleId,Integer[] sysResourceIds){
-        try{
-            sysResourceService.allot(sysRoleId,sysResourceIds);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return "admin/module/role/allot";
-    }
-
     @RequestMapping(value = "roleDispatcher",method = RequestMethod.GET)
     String roleDispatcher() throws Exception {
         return "admin/module/role/roleDispatcher";
@@ -100,32 +79,26 @@ public class AdminRole {
 
     @RequestMapping(value = "loadSysResource")
     @ResponseBody
-    Object getSysResource(Integer parentId,Integer sysRoleId) {
+    Object getSysResource(Integer parentId) {
         if (parentId == null) {
             SysResource sysResource = sysResourceService.getSysResourceBySysResourceId(PrivilegeCode.SYSRESOURCEROOD.toIntegerCode());
             Node node = new Node();
             node.setName(sysResource.getResourceTitle());
             node.setId(sysResource.getSysResourceId());
             node.setIsParent(true);
-            if(sysRoleId!=null){
-                node.setChecked(sysRoleService.countRoleResource(sysRoleId,sysResource.getSysResourceId()));
-            }
             return node;
         } else {
-            return getSysResourceNode(parentId,sysRoleId);
+            return getSysResourceNode(parentId);
         }
     }
 
-    List<Node> getSysResourceNode(Integer parentId,Integer sysRoleId) {
+    List<Node> getSysResourceNode(Integer parentId) {
         List<SysResource> sysResourceList = sysResourceService.getSysResourceByParentId(parentId);
         List<Node> nodes = new ArrayList<Node>();
         for (SysResource sysResource : sysResourceList) {
             Node node = new Node();
             node.setName(sysResource.getResourceTitle());
             node.setId(sysResource.getSysResourceId());
-            if(sysRoleId!=null){
-                node.setChecked(sysRoleService.countRoleResource(sysRoleId,sysResource.getSysResourceId()));
-            }
             int count = sysResourceService.getSysResourceByParentIdCount(sysResource.getSysResourceId());
             if (count > 0) {
                 node.setIsParent(true);
