@@ -18,7 +18,7 @@
     <c:forEach items="${userList}" var="sysUser" varStatus="s">
         <tr>
             <td>${sysUser.loginId}</td>
-            <td></td>
+            <td><c:if test="${sysUser.sysUserId !=1}"><a href="">修改角色</a></c:if></td>
         </tr>
     </c:forEach>
     </tbody>

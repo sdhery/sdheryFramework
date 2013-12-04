@@ -40,4 +40,9 @@ public class AdminManage {
         sysUserService.addAdmin(sysUser);
         return "redirect:/admin/role/list";
     }
+
+    @RequestMapping(value = "modifyRole",method = RequestMethod.GET)
+    String modifyRole() throws Exception {
+        return "admin/module/admin/modifyRole";
+    }
 }
