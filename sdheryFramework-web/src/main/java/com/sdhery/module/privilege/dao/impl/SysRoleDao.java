@@ -35,4 +35,8 @@ public class SysRoleDao extends BaseMybatisDao<SysRole, Integer> implements ISys
     public List<Integer> searchRoleSysResource(Integer sysRoleId) {
         return getSqlSession().selectList(getDaoNameSpace(".searchRoleSysResource"),sysRoleId);
     }
+
+    public List<Integer> getRoleIdByObjId(ConcurrentHashMapExt hashMap) {
+        return getSqlSession().selectList(getDaoNameSpace(".getRoleIdByObjId"),hashMap);
+    }
 }

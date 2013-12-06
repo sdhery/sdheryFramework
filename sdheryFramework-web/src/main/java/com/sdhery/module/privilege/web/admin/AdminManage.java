@@ -1,5 +1,9 @@
 package com.sdhery.module.privilege.web.admin;
 
+import com.sdhery.module.core.web.BaseController;
+import com.sdhery.module.privilege.code.PrivilegeCode;
+import com.sdhery.module.privilege.domain.SysRole;
+import com.sdhery.module.privilege.service.ISysRoleService;
 import com.sdhery.module.user.domain.SysUser;
 import com.sdhery.module.user.service.ISysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +23,11 @@ import java.util.List;
  */
 @Controller
 @RequestMapping(value = "/admin/admin")
-public class AdminManage {
+public class AdminManage extends BaseController {
     @Autowired
     ISysUserService sysUserService;
+    @Autowired
+    ISysRoleService sysRoleService;
 
     @RequestMapping(value = "list")
     String adminList(ModelMap map) throws Exception {
@@ -42,7 +48,14 @@ public class AdminManage {
     }
 
     @RequestMapping(value = "modifyRole",method = RequestMethod.GET)
-    String modifyRole() throws Exception {
+    String modifyRole(Integer sysUserId,ModelMap map) throws Exception {
+        if(sysUserId!=null){
+            SysUser sysUser = sysUserService.getSysUserBySysUserId(sysUserId);
+            List<SysRole> sysRoles = sysRoleService.search(null);
+            map.put("sysUser",sysUser);
+            map.put("sysRoles",sysRoles);
+            map.put("existSysRoleIds",sysRoleService.getRoleIdByObjId(sysUserId, PrivilegeCode.ROLE_DISPATCHER_OBJTYPE_ADMIN.toIntegerCode()));
+        }
         return "admin/module/admin/modifyRole";
     }
 }

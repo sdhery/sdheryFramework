@@ -83,4 +83,8 @@
         SELECT SYS_RESOURCE_ID FROM sys_role_sys_resource WHERE SYS_ROLE_ID = #{sysRoleId}
     </select>
 
+    <select id="getRoleIdByObjId" resultType="java.lang.Integer" parameterType="com.sdhery.module.core.base.ConcurrentHashMapExt">
+        SELECT SYS_ROLE_ID FROM sys_role_dispatcher WHERE OBJID = ${objId} AND OBJTYPE = ${objType}
+    </select>
+
 </mapper>

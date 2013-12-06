@@ -8,8 +8,19 @@ package com.sdhery.module.privilege.code;
  * To change this template use File | Settings | File Templates.
  */
 public enum PrivilegeCode{
+    /**
+     * 超级管理管员登录名
+     */
     SUPERLOGINID("root"),
-    SYSRESOURCEROOD(1);
+    /**
+     * 超级管理员角色ID
+     */
+    SYSRESOURCEROOD(1),
+    /**
+     * 管理员类类型
+     */
+    ROLE_DISPATCHER_OBJTYPE_ADMIN(1)
+    ;
 
     private String code;
 

@@ -3,6 +3,7 @@ package com.sdhery.module.privilege.service.impl;
 import com.sdhery.module.core.base.ConcurrentHashMapExt;
 import com.sdhery.module.core.dao.EntityDao;
 import com.sdhery.module.core.service.impl.BaseService;
+import com.sdhery.module.privilege.code.PrivilegeCode;
 import com.sdhery.module.privilege.dao.ISysRoleDao;
 import com.sdhery.module.privilege.domain.SysRole;
 import com.sdhery.module.privilege.service.ISysResourceService;
@@ -74,5 +75,12 @@ public class SysRoleService extends BaseService<SysRole, Integer> implements ISy
 
     public List<Integer> searchRoleSysResource(Integer sysRoleId) {
         return sysRoleDao.searchRoleSysResource(sysRoleId);
+    }
+
+    public List<Integer> getRoleIdByObjId(Integer objId, Integer objType) {
+        ConcurrentHashMapExt model = new ConcurrentHashMapExt();
+        model.put("objId", objId);
+        model.put("objType", objType);
+        return sysRoleDao.getRoleIdByObjId(model);
     }
 }

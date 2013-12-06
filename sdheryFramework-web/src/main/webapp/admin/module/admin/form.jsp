@@ -8,7 +8,7 @@
 </head>
 <body>
 <c:import url="includeTop.jsp?tag=2"/>
-<form class="form-horizontal well" method="post" action="${frontPath}/admin/role/adminAdd">
+<form class="form-horizontal well" method="post" action="${frontPath}/admin/admin/add">
     <div class="control-group">
         <label class="control-label">登录名：</label>
         <div class="controls">
