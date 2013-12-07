@@ -16,7 +16,7 @@ import java.lang.reflect.InvocationTargetException;
  * Time: 上午10:12
  * To change this template use File | Settings | File Templates.
  */
-@Controller
+
 public class BaseController {
     @Autowired(required=false)
     protected HttpServletRequest request;

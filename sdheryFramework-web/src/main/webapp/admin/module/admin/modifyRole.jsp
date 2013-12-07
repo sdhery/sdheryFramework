@@ -10,7 +10,7 @@
 <form class="form-horizontal well" method="post">
     <div class="control-group">
         <label class="control-label">登录名：</label>
-        <div class="controls"></div>
+        <div class="controls"><input type="text" value="${sysUser.loginId}" readonly/></div>
     </div>
     <div class="control-group">
         <div class="controls">

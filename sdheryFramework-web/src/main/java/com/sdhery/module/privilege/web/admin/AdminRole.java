@@ -1,6 +1,7 @@
 package com.sdhery.module.privilege.web.admin;
 
 import com.sdhery.module.core.commons.Condition;
+import com.sdhery.module.core.web.BaseController;
 import com.sdhery.module.privilege.code.PrivilegeCode;
 import com.sdhery.module.privilege.domain.SysResource;
 import com.sdhery.module.privilege.domain.SysRole;
@@ -28,7 +29,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping(value = "/admin/role")
-public class AdminRole {
+public class AdminRole extends BaseController {
     @Autowired
     ISysRoleService sysRoleService;
     @Autowired
