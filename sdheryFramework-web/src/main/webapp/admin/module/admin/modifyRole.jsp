@@ -13,6 +13,13 @@
         <div class="controls"><input type="text" value="${sysUser.loginId}" readonly/></div>
     </div>
     <div class="control-group">
+        <label class="control-label">角色：</label>
+        <div class="controls">
+            <c:forEach items="${sysRoles}" var="sysRole">
+                <label class="checkbox inline"><input type="checkbox" name="sysRoleIds" value="${sysRole.sysRoleId}"/>${sysRole.sysRoleName}</label></c:forEach>
+        </div>
+    </div>
+    <div class="control-group">
         <div class="controls">
             <button type="submit" class="btn btn-primary">提交</button>
         </div>

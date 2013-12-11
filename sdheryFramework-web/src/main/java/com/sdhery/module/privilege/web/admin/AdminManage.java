@@ -44,7 +44,7 @@ public class AdminManage extends BaseController {
     @RequestMapping(value = "add",method = RequestMethod.POST)
     String adminAdd(SysUser sysUser) throws Exception {
         sysUserService.addAdmin(sysUser);
-        return "redirect:/admin/role/list";
+        return "redirect:/admin/admin/list";
     }
 
     @RequestMapping(value = "modifyRole",method = RequestMethod.GET)
@@ -57,5 +57,10 @@ public class AdminManage extends BaseController {
             map.put("existSysRoleIds",sysRoleService.getRoleIdByObjId(sysUserId, PrivilegeCode.ROLE_DISPATCHER_OBJTYPE_ADMIN.toIntegerCode()));
         }
         return "admin/module/admin/modifyRole";
+    }
+
+    @RequestMapping(value = "modifyRole",method = RequestMethod.POST)
+    String modifyRole(Integer[] sysRoleIds,Integer objId,Integer objType) throws Exception {
+        return "redirect:/admin/admin/list";
     }
 }

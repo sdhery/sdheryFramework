@@ -83,4 +83,8 @@ public class SysRoleService extends BaseService<SysRole, Integer> implements ISy
         model.put("objType", objType);
         return sysRoleDao.getRoleIdByObjId(model);
     }
+
+    public void roleDispatcher(Integer[] sysRoleIds, Integer objId, Integer objType) throws Exception {
+        //To change body of implemented methods use File | Settings | File Templates.
+    }
 }

@@ -29,4 +29,6 @@ public interface ISysRoleService extends IBaseService<SysRole, Integer> {
     List<Integer> searchRoleSysResource(Integer sysRoleId);
 
     List<Integer> getRoleIdByObjId(Integer objId,Integer objType);
+
+    void roleDispatcher(Integer[] sysRoleIds,Integer objId,Integer objType) throws Exception;
 }
