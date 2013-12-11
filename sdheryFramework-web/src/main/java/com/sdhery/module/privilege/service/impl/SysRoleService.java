@@ -85,6 +85,14 @@ public class SysRoleService extends BaseService<SysRole, Integer> implements ISy
     }
 
     public void roleDispatcher(Integer[] sysRoleIds, Integer objId, Integer objType) throws Exception {
-        //To change body of implemented methods use File | Settings | File Templates.
+        if(sysRoleIds==null || sysRoleIds.length==0){
+
+        }
+        if(objId==null){
+
+        }
+        if(objType==null){
+
+        }
     }
 }
