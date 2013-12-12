@@ -32,35 +32,42 @@ public class AdminManage extends BaseController {
     @RequestMapping(value = "list")
     String adminList(ModelMap map) throws Exception {
         List<SysUser> userList = sysUserService.getAdminList();
-        map.put("userList",userList);
+        map.put("userList", userList);
         return "admin/module/admin/list";
     }
 
-    @RequestMapping(value = "add",method = RequestMethod.GET)
+    @RequestMapping(value = "add", method = RequestMethod.GET)
     String adminAdd() throws Exception {
         return "admin/module/admin/form";
     }
 
-    @RequestMapping(value = "add",method = RequestMethod.POST)
+    @RequestMapping(value = "add", method = RequestMethod.POST)
     String adminAdd(SysUser sysUser) throws Exception {
         sysUserService.addAdmin(sysUser);
         return "redirect:/admin/admin/list";
     }
 
-    @RequestMapping(value = "modifyRole",method = RequestMethod.GET)
-    String modifyRole(Integer sysUserId,ModelMap map) throws Exception {
-        if(sysUserId!=null){
+    @RequestMapping(value = "modifyRole", method = RequestMethod.GET)
+    String modifyRole(Integer sysUserId, ModelMap map) throws Exception {
+        if (sysUserId != null) {
             SysUser sysUser = sysUserService.getSysUserBySysUserId(sysUserId);
             List<SysRole> sysRoles = sysRoleService.search(null);
-            map.put("sysUser",sysUser);
-            map.put("sysRoles",sysRoles);
-            map.put("existSysRoleIds",sysRoleService.getRoleIdByObjId(sysUserId, PrivilegeCode.ROLE_DISPATCHER_OBJTYPE_ADMIN.toIntegerCode()));
+            int objType =  PrivilegeCode.ROLE_DISPATCHER_OBJTYPE_ADMIN.toIntegerCode();
+            map.put("sysUser", sysUser);
+            map.put("objType", objType);
+            map.put("sysRoles", sysRoles);
+            map.put("existSysRoleIds", sysRoleService.getRoleIdByObjId(sysUserId, objType));
         }
         return "admin/module/admin/modifyRole";
     }
 
-    @RequestMapping(value = "modifyRole",method = RequestMethod.POST)
-    String modifyRole(Integer[] sysRoleIds,Integer objId,Integer objType) throws Exception {
+    @RequestMapping(value = "modifyRole", method = RequestMethod.POST)
+    String modifyRole(Integer[] sysRoleIds, Integer objId, Integer objType) {
+        try {
+            sysRoleService.roleDispatcher(sysRoleIds, objId, objType);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return "redirect:/admin/admin/list";
     }
 }
