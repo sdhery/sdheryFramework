@@ -24,4 +24,8 @@ public interface ISysRoleDao extends EntityDao<SysRole,Integer> {
     List<Integer> searchRoleSysResource(Integer sysRoleId);
 
     List<Integer> getRoleIdByObjId(ConcurrentHashMapExt hashMap);
+
+    int deleteRoleDispatcher(ConcurrentHashMapExt hashMap);
+
+    int addRoleDispatcher(ConcurrentHashMapExt hashMap);
 }

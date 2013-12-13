@@ -87,4 +87,11 @@
         SELECT SYS_ROLE_ID FROM sys_role_dispatcher WHERE OBJID = ${objId} AND OBJTYPE = ${objType}
     </select>
 
+    <delete id="deleteRoleDispatcher" parameterType="com.sdhery.module.core.base.ConcurrentHashMapExt">
+      DELETE FROM sys_role_dispatcher WHERE OBJID = ${objId} AND OBJTYPE = ${objType}
+    </delete>
+
+    <insert id="addRoleDispatcher" parameterType="com.sdhery.module.core.base.ConcurrentHashMapExt">
+        insert into sys_role_dispatcher(SYS_ROLE_ID,OBJID,OBJTYPE) values (${sysRoleId},${objId},${objType})
+    </insert>
 </mapper>

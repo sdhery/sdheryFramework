@@ -31,4 +31,8 @@ public interface ISysRoleService extends IBaseService<SysRole, Integer> {
     List<Integer> getRoleIdByObjId(Integer objId,Integer objType);
 
     void roleDispatcher(Integer[] sysRoleIds,Integer objId,Integer objType) throws Exception;
+
+    int deleteRoleDispatcher(int objId,int objType);
+
+    int addRoleDispatcher(int sysRoleId,int objId,int objType);
 }

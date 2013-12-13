@@ -95,4 +95,19 @@ public class SysRoleService extends BaseService<SysRole, Integer> implements ISy
             throw new Exception("对象类型不能为空");
         }
     }
+
+    public int deleteRoleDispatcher(int objId, int objType) {
+        ConcurrentHashMapExt model = new ConcurrentHashMapExt();
+        model.put("objId", objId);
+        model.put("objType", objType);
+        return sysRoleDao.deleteRoleDispatcher(model);
+    }
+
+    public int addRoleDispatcher(int sysRoleId, int objId, int objType) {
+        ConcurrentHashMapExt model = new ConcurrentHashMapExt();
+        model.put("sysRoleId", sysRoleId);
+        model.put("objId", objId);
+        model.put("objType", objType);
+        return sysRoleDao.addRoleDispatcher(model);
+    }
 }
