@@ -7,7 +7,7 @@
 </head>
 <body>
 <c:import url="includeTop.jsp?tag=3"/>
-<form class="form-horizontal well" method="post">
+<form class="form-horizontal well" method="post" action="${frontPath}/admin/admin/modifyRole">
     <input type="hidden" value="${objType}" name="objType"/>
     <input type="hidden" value="${sysUser.sysUserId}" name="objId"/>
     <div class="control-group">
@@ -18,7 +18,9 @@
         <label class="control-label">角色：</label>
         <div class="controls">
             <c:forEach items="${sysRoles}" var="sysRole">
-                <label class="checkbox inline"><input type="checkbox" name="sysRoleIds" value="${sysRole.sysRoleId}"/>${sysRole.sysRoleName}</label></c:forEach>
+                <c:set value="-${sysRole.sysRoleId}-" var="sysRoleId"/>
+                <label class="checkbox inline"><input type="checkbox" name="sysRoleIds" value="${sysRole.sysRoleId}" <c:if test="${fn:indexOf(exists, sysRoleId)>=0}">checked </c:if>/>${sysRole.sysRoleName}</label>
+            </c:forEach>
         </div>
     </div>
     <div class="control-group">

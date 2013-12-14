@@ -85,18 +85,15 @@ public class SysRoleService extends BaseService<SysRole, Integer> implements ISy
     }
 
     public void roleDispatcher(Integer[] sysRoleIds, Integer objId, Integer objType) throws Exception {
-        if (sysRoleIds == null || sysRoleIds.length == 0) {
-            throw new Exception("角色授权不能为空");
-        }
         if (objId == null) {
             throw new Exception("对象不能为空");
         }
         if (objType == null) {
             throw new Exception("对象类型不能为空");
         }
-        deleteRoleDispatcher(objId,objType);
-        for (Integer sysRoleId : sysRoleIds){
-            addRoleDispatcher(sysRoleId,objId,objType);
+        deleteRoleDispatcher(objId, objType);
+        for (Integer sysRoleId : sysRoleIds) {
+            addRoleDispatcher(sysRoleId, objId, objType);
         }
     }
 

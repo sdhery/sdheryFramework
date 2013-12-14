@@ -53,10 +53,17 @@ public class AdminManage extends BaseController {
             SysUser sysUser = sysUserService.getSysUserBySysUserId(sysUserId);
             List<SysRole> sysRoles = sysRoleService.search(null);
             int objType =  PrivilegeCode.ROLE_DISPATCHER_OBJTYPE_ADMIN.toIntegerCode();
+            List<Integer> existSysRoleIds = sysRoleService.getRoleIdByObjId(sysUserId, objType);
+            StringBuffer exists  = new StringBuffer();
+            for(Integer sysRoleId : existSysRoleIds){
+                exists.append("-");
+                exists.append(sysRoleId);
+                exists.append("-");
+            }
             map.put("sysUser", sysUser);
             map.put("objType", objType);
             map.put("sysRoles", sysRoles);
-            map.put("existSysRoleIds", sysRoleService.getRoleIdByObjId(sysUserId, objType));
+            map.put("exists", exists);
         }
         return "admin/module/admin/modifyRole";
     }
